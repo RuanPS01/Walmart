@@ -113,7 +113,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Produto", "Quantidade disp.", "Data de Vencimento"
+                "Produto", "Data de Vencimento", "Quantidade disp."
             }
         ) {
             Class[] types = new Class [] {
