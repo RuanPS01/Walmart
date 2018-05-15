@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ruanp
  */
-public class MenuProdutosCRUD extends javax.swing.JFrame {
+public class MenuClientesCRUD extends javax.swing.JFrame {
 
     ControleProdutos listaRemedios = new ControleProdutos();
     //AtualizaTabela updateTable;
@@ -27,7 +27,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     /**
      * Creates new form MenuDeRemedios
      */
-    public MenuProdutosCRUD() {
+    public MenuClientesCRUD() {
         initComponents();
         //updateTable = new AtualizaTabela();
         //upTable = new Thread(updateTable);
@@ -63,14 +63,14 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/walmart/view/smal_Walmart_logo.svg.png"))); // NOI18N
         jLabel1.setToolTipText("");
 
-        jButton1.setText("Novo funcionário");
+        jButton1.setText("Novo cliente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Editar registro de funcionário");
+        jButton2.setText("Editar registro de cliente");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -237,6 +237,8 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuProdutosCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
