@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Polez/Documents/GitHub/Walmart/src/br/inatel/walmart/view/menuFuncionário.java</file>
-            <file>file:/C:/Users/Polez/Documents/GitHub/Walmart/src/br/inatel/walmart/view/loginWindow.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Produto.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/AtualizaTabela.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/ControleProdutos.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/Walmart.java</file>
         </group>
     </open-files>
 </project-private>

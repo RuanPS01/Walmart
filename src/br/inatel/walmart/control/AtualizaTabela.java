@@ -18,7 +18,6 @@ public class AtualizaTabela implements Runnable{
     
     private JTable tabela;
     private ControleProdutos produtos = new ControleProdutos();
-    //public MenuDeRemedios jTable = new MenuDeRemedios();
     
     @Override
     public void run() {
@@ -27,7 +26,6 @@ public class AtualizaTabela implements Runnable{
             atualizaTabela(produtos);
             System.out.println("Tabela atualizada!");
             Thread.sleep(2000);
-            //jTable.setjTable(tabela);
         } catch (InterruptedException ex) {
             Logger.getLogger(AtualizaTabela.class.getName()).log(Level.SEVERE, null, ex);
         } 

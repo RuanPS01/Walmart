@@ -33,18 +33,18 @@ public class ControleProdutos {
        return true; 
     }
     
-    //Metodo para adicionar o remedio na posição indicada
+    //Metodo para adicionar o dado na posição indicada
     public void addProdutoAt(Produto remedio, int index){
         ListaProdutos.remove(index);
         ListaProdutos.add(index, remedio);
     }
     
-    //Método para pegar o remédio completo da lista
+    //Método para pegar o dado completo da lista
     public Produto getProduto(int index){
         return ListaProdutos.get(index);   
     }
     
-    //Metodo para remover remedio da lista
+    //Metodo para remover o dado da lista
     public void excluir(int index){
         ListaProdutos.remove(index);    
     }
