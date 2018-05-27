@@ -11,16 +11,25 @@ import java.time.Period;
  * @author ruanp
  */
 public class Produto{
-    private String observacao, nomeProduto, precoProduto, empresaProduto, barcodeProduto;   
-    private LocalDate dataVencimento;
-    private double quantidadeDisponivel=0;
+    private int idProduto;
+    private String observacao, nomeProduto, precoProduto, empresaProduto, barcodeProduto;     
+    private LocalDate dataVencimentoProduto;
+    private double quantidadeDisponivelProduto = 0;
+    
+    public int getId() {
+        return idProduto;
+    }
+
+    public void setId(int id) {
+        this.idProduto = id;
+    }
     
     public LocalDate getDataVencimento() {
-        return dataVencimento;
+        return dataVencimentoProduto;
     }
     
     public void setDataVencimento(LocalDate dataVencimento) {
-        this.dataVencimento = dataVencimento;
+        this.dataVencimentoProduto = dataVencimento;
     }
     
     public String getNomeProduto() {
@@ -40,11 +49,11 @@ public class Produto{
     }
 
     public double getQuantidadeDisponivel() {
-        return quantidadeDisponivel;
+        return quantidadeDisponivelProduto;
     }
 
     public void setQuantidadeDisponivel(double quantidadeDisponivel) {
-        this.quantidadeDisponivel = quantidadeDisponivel;
+        this.quantidadeDisponivelProduto = quantidadeDisponivel;
     }
     
     public String getPrecoProduto() {
@@ -61,5 +70,13 @@ public class Produto{
 
     public void setEmpresa(String empresa) {
         this.empresaProduto = empresa;
+    }
+    
+    public String getBarcodeProduto() {
+        return barcodeProduto;
+    }
+
+    public void setBarcodeProduto(String barcodeProduto) {
+        this.barcodeProduto = barcodeProduto;
     }
 }
