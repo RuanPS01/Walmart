@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author 1513 MXTI
  */
-public class Remessas {
+public class Remessa {
     private int idRemessa;
     private String tipoRemessa, empresaRemessa, funcionarioRemessa, horaRemessa;
     private Date dataRemessa;

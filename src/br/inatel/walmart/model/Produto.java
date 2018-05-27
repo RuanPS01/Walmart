@@ -6,29 +6,31 @@
 package br.inatel.walmart.model;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 /** Classe com dados de cadastro do remédio 
  *
  * @author ruanp
  */
 public class Produto{
     private int idProduto;
-    private String observacao, nomeProduto, precoProduto, empresaProduto, barcodeProduto;     
-    private LocalDate dataVencimentoProduto;
-    private double quantidadeDisponivelProduto = 0;
+    private String nomeProduto, observacao, empresaProduto, barcodeProduto;     
+    private Date dataVencimentoProduto;
+    private int quantidadeDisponivelProduto = 0; 
+    private double precoProduto;
     
-    public int getId() {
+    public int getIdProduto() {
         return idProduto;
     }
 
-    public void setId(int id) {
+    public void setIdProduto(int id) {
         this.idProduto = id;
     }
     
-    public LocalDate getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimentoProduto;
     }
     
-    public void setDataVencimento(LocalDate dataVencimento) {
+    public void setDataVencimento(Date dataVencimento) {
         this.dataVencimentoProduto = dataVencimento;
     }
     
@@ -47,28 +49,12 @@ public class Produto{
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-
-    public double getQuantidadeDisponivel() {
-        return quantidadeDisponivelProduto;
-    }
-
-    public void setQuantidadeDisponivel(double quantidadeDisponivel) {
-        this.quantidadeDisponivelProduto = quantidadeDisponivel;
-    }
     
-    public String getPrecoProduto() {
-        return precoProduto;
-    }
-
-    public void setPrecoProduto(String precoProduto) {
-        this.precoProduto = precoProduto;
-    }
-    
-    public String getEmpresa() {
+    public String getEmpresaProduto() {
         return empresaProduto;
     }
 
-    public void setEmpresa(String empresa) {
+    public void setEmpresaProduto(String empresa) {
         this.empresaProduto = empresa;
     }
     
@@ -78,5 +64,21 @@ public class Produto{
 
     public void setBarcodeProduto(String barcodeProduto) {
         this.barcodeProduto = barcodeProduto;
+    }
+    
+     public int getQuantidadeDisponivelProduto() {
+        return quantidadeDisponivelProduto;
+    }
+
+    public void setQuantidadeDisponivelProduto(int quantidadeDisponivelProduto) {
+        this.quantidadeDisponivelProduto = quantidadeDisponivelProduto;
+    }
+
+    public double getPrecoProduto() {
+        return precoProduto;
+    }
+
+    public void setPrecoProduto(double precoProduto) {
+        this.precoProduto = precoProduto;
     }
 }
