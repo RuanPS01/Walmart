@@ -179,7 +179,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        RegistroProduto registroRemedio = new RegistroProduto(listaRemedios);
+        addProduto registroRemedio = new addProduto(listaRemedios);
         registroRemedio.setVisible(true);
         boolean JaCadastrou = true;
 

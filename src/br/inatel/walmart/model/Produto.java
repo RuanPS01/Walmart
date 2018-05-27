@@ -11,7 +11,7 @@ import java.time.Period;
  * @author ruanp
  */
 public class Produto{
-    private String observacao, nomeProduto;
+    private String observacao, nomeProduto, precoProduto, empresaProduto, barcodeProduto;   
     private LocalDate dataVencimento;
     private double quantidadeDisponivel=0;
     
@@ -45,5 +45,21 @@ public class Produto{
 
     public void setQuantidadeDisponivel(double quantidadeDisponivel) {
         this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+    
+    public String getPrecoProduto() {
+        return precoProduto;
+    }
+
+    public void setPrecoProduto(String precoProduto) {
+        this.precoProduto = precoProduto;
+    }
+    
+    public String getEmpresa() {
+        return empresaProduto;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresaProduto = empresa;
     }
 }

@@ -19,12 +19,12 @@ public class ControleProdutos {
     /** Método para
      * 
     */
-    public boolean addProduto(Produto remedio){
+    public boolean addProduto(Produto produto){
         
         System.out.println("-------------------------");
-        System.out.println(remedio.getNomeProduto());
+        System.out.println(produto.getNomeProduto());
         
-        ListaProdutos.add(remedio);
+        ListaProdutos.add(produto);
         
         for (int i = 0; i < ListaProdutos.size(); i++) {
             if(i==0)System.out.println("-----------------Listagem dos já cadastrados-----------------");
