@@ -56,9 +56,9 @@ public class ControleProdutos {
         return ListaProdutos.get(i).getNomeProduto();
     }
     public String getDataVencimento(int i){
-        return String.valueOf(ListaProdutos.get(i).getDataVencimento());
+        return String.valueOf(ListaProdutos.get(i).getDataStringVencimento());
     }
     public String getQuantidadeDisponivel(int i){
-        return String.valueOf(ListaProdutos.get(i).getQuantidadeDisponivel());
+        return String.valueOf(ListaProdutos.get(i).getQuantidadeDisponivelProduto());
     }
 }

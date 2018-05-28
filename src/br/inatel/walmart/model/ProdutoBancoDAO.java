@@ -89,7 +89,7 @@ public class ProdutoBancoDAO {
             _pst.setString(4, novo_produto.getObservacao());
             _pst.setString(5, novo_produto.getEmpresaProduto());
             _pst.setString(6, novo_produto.getBarcodeProduto());
-            _pst.setDate(7, (Date) novo_produto.getDataVencimento());
+            _pst.setString(7, novo_produto.getDataStringVencimento());
             _pst.setInt(8, novo_produto.getQuantidadeDisponivelProduto());
             // Executo a pesquisa
             _pst.executeUpdate();
@@ -113,8 +113,6 @@ public class ProdutoBancoDAO {
                 System.out.println("Erro: Conexão não pode ser fechada! :(");
             }
         }
-
         return _sucesso;
-    }
-    
+    }   
 }

@@ -40,9 +40,9 @@ public class EditarProduto extends javax.swing.JFrame {
         
         jTextFieldRemedio.setText(produto.getNomeProduto());
         jTextFieldObservacao.setText(produto.getObservacao());
-        jTextFieldDiaVencimento.setText(String.valueOf(produto.getDataVencimento().getDayOfMonth()));
-        jTextFieldMesVencimento.setText(String.valueOf(produto.getDataVencimento().getMonthValue()));
-        jTextFieldAnoVencimento.setText(String.valueOf(produto.getDataVencimento().getYear()));  
+        jTextFieldDiaVencimento.setText(String.valueOf(produto.getLocalDateVencimentoProduto().getDayOfMonth()));
+        jTextFieldMesVencimento.setText(String.valueOf(produto.getLocalDateVencimentoProduto().getMonthValue()));
+        jTextFieldAnoVencimento.setText(String.valueOf(produto.getLocalDateVencimentoProduto().getYear()));  
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,7 +181,7 @@ public class EditarProduto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         produtoTemp.setNomeProduto(jTextFieldRemedio.getText());
-        produtoTemp.setDataVencimento(LocalDate.of(Integer.parseInt(jTextFieldAnoVencimento.getText()), Integer.parseInt(jTextFieldMesVencimento.getText()), Integer.parseInt(jTextFieldDiaVencimento.getText())));
+        produtoTemp.setLocalDateVencimentoProduto(LocalDate.of(Integer.parseInt(jTextFieldAnoVencimento.getText()), Integer.parseInt(jTextFieldMesVencimento.getText()), Integer.parseInt(jTextFieldDiaVencimento.getText())));
         produtoTemp.setObservacao(jTextFieldObservacao.getText());
 
         control.addProdutoAt(produtoTemp, index);

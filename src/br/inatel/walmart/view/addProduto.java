@@ -184,7 +184,7 @@ public class addProduto extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         produtoTemp.setNomeProduto(jTextFieldProduto.getText());
-        produtoTemp.setDataVencimento(LocalDate.of(Integer.parseInt(jTextFieldAnoVencimento.getText()), Integer.parseInt(jTextFieldMesVencimento.getText()), Integer.parseInt(jTextFieldDiaVencimento.getText())));
+        produtoTemp.setLocalDateVencimentoProduto(LocalDate.of(Integer.parseInt(jTextFieldAnoVencimento.getText()), Integer.parseInt(jTextFieldMesVencimento.getText()), Integer.parseInt(jTextFieldDiaVencimento.getText())));
         produtoTemp.setObservacao(jTextFieldObservacao.getText());
 
         ListaProdutos.addProduto(produtoTemp);

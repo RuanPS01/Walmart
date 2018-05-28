@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class Produto{
     private int idProduto;
-    private String nomeProduto, observacao, empresaProduto, barcodeProduto;     
-    private Date dataVencimentoProduto;
+    private String nomeProduto, observacao, empresaProduto, barcodeProduto, dataVencimentoProduto;
+    private LocalDate localDateVencimentoProduto;
     private int quantidadeDisponivelProduto = 0; 
     private double precoProduto;
     
@@ -26,12 +26,21 @@ public class Produto{
         this.idProduto = id;
     }
     
-    public Date getDataVencimento() {
+    public String getDataStringVencimento() {
         return dataVencimentoProduto;
     }
     
-    public void setDataVencimento(Date dataVencimento) {
+    public void setDataStringVencimento(String dataVencimento) {
         this.dataVencimentoProduto = dataVencimento;
+    }
+
+    public LocalDate getLocalDateVencimentoProduto() {
+        return localDateVencimentoProduto;
+    }
+
+    public void setLocalDateVencimentoProduto(LocalDate localDateVencimentoProduto) {
+        this.localDateVencimentoProduto = localDateVencimentoProduto;
+        dataVencimentoProduto = getLocalDateVencimentoProduto().getDayOfMonth()+"/"+getLocalDateVencimentoProduto().getMonthValue()+"/"+getLocalDateVencimentoProduto().getYear();
     }
     
     public String getNomeProduto() {
