@@ -182,7 +182,7 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         //RegistroProduto registroRemedio = new RegistroProduto(listaRemedios);
         //registroRemedio.setVisible(true);
         //boolean JaCadastrou = true;
-        new addCliente().setVisible(true);
+        new adiciCliente().setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
