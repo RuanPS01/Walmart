@@ -34,9 +34,9 @@ public class ControleProdutos {
     }
     
     //Metodo para adicionar o dado na posição indicada
-    public void addProdutoAt(Produto remedio, int index){
+    public void addProdutoAt(Produto produto, int index){
         ListaProdutos.remove(index);
-        ListaProdutos.add(index, remedio);
+        ListaProdutos.add(index, produto);
     }
     
     //Método para pegar o dado completo da lista
@@ -61,4 +61,13 @@ public class ControleProdutos {
     public String getQuantidadeDisponivel(int i){
         return String.valueOf(ListaProdutos.get(i).getQuantidadeDisponivelProduto());
     }
+
+    public List<Produto> getListaProdutos() {
+        return ListaProdutos;
+    }
+
+    public void setListaProdutos(List<Produto> ListaProdutos) {
+        this.ListaProdutos = ListaProdutos;
+    }
+    
 }

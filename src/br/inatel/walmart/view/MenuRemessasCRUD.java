@@ -7,7 +7,7 @@ package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.ControleProdutos;
 import br.inatel.walmart.model.Produto;
-import br.inatel.walmart.control.AtualizaTabela;
+import br.inatel.walmart.control.AtualizaTabelaProdutos;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -175,6 +175,7 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -187,7 +188,7 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         if (listaRemedios.size() != 0) {
             Produto remedio = new Produto();
             remedio = listaRemedios.getProduto(jTable.getSelectedRow());
-            EditarProduto edit = new EditarProduto(remedio, listaRemedios, jTable.getSelectedRow());
+            editProduto edit = new editProduto(remedio, listaRemedios, jTable.getSelectedRow());
             edit.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed

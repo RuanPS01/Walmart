@@ -14,23 +14,41 @@ import javax.swing.JOptionPane;
  *
  * @author ruanp
  */
-public class addProduto extends javax.swing.JFrame {
+public class editProduto extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroRemedio
      */
     ControleProdutos ListaProdutos;
+    Produto produto = new Produto();
     Produto produtoTemp = new Produto();
+    int index;
 
-    public addProduto(ControleProdutos ListaDeProdutos) {
+    public editProduto(Produto produto, ControleProdutos ListaDeProdutos, int index) {
         initComponents();
-        ListaProdutos = ListaDeProdutos;
+        this.ListaProdutos = ListaDeProdutos;
+        this.index = index;
+        this.produto = produto;
+        initComponents(); 
+        atualizarCampos(); //Chamando metodo atualizar campos
     }
 
-    private addProduto() {
+    private editProduto() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    private void atualizarCampos(){
+        ID_textBoxProduto.setText(String.valueOf(produto.getIdProduto()));
+        NOME_textBoxProduto.setText(produto.getNomeProduto());
+        EMPRESA_textBoxProduto.setText(produto.getEmpresaProduto());
+        PRECO_textBoxProduto.setText(String.valueOf(produto.getPrecoProduto()));
+        QUANT_textBoxProduto.setText(String.valueOf(produto.getQuantidadeDisponivelProduto()));
+        BARCODE_textBoxProduto.setText(produto.getBarcodeProduto());
+        OBS_textBoxProduto.setText(produto.getObservacao());
+        DIA_V_textBoxProduto.setText(String.valueOf(produto.getLocalDateVencimentoProduto().getDayOfMonth()));
+        MES_V_textBoxProduto.setText(String.valueOf(produto.getLocalDateVencimentoProduto().getMonthValue()));
+        ANO_V_textBoxProduto.setText(String.valueOf(produto.getLocalDateVencimentoProduto().getYear()));  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,7 +90,7 @@ public class addProduto extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jLabel1.setText("Regitro de novo produto");
+        jLabel1.setText("Editar produto");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("Nome do produto:");
@@ -252,8 +270,8 @@ public class addProduto extends javax.swing.JFrame {
         produtoTemp.setLocalDateVencimentoProduto(LocalDate.of(Integer.parseInt(ANO_V_textBoxProduto.getText()), Integer.parseInt(MES_V_textBoxProduto.getText()), Integer.parseInt(DIA_V_textBoxProduto.getText())));
         produtoTemp.setObservacao(OBS_textBoxProduto.getText());
 
-        ListaProdutos.addProduto(produtoTemp);
-        JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
+        ListaProdutos.addProdutoAt(produtoTemp, index);
+        JOptionPane.showMessageDialog(null, "Registro alterado e salvo com sucesso! ");
         this.dispose();
 
 
@@ -293,14 +311,22 @@ public class addProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(editProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -313,7 +339,7 @@ public class addProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addProduto().setVisible(true);
+                new editProduto().setVisible(true);
             }
         });
     }

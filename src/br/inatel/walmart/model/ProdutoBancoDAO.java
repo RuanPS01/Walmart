@@ -114,5 +114,43 @@ public class ProdutoBancoDAO {
             }
         }
         return _sucesso;
-    }   
+    }
+    
+    // (1) DELETE: Deleta um Usuario
+    public boolean deleta(Produto novo_produto) {
+        // Conecto com o Banco
+        conectaBanco();
+        // Faz a consulta
+        //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
+        String sql = "DELETE FROM produto WHERE idProduto = ?";
+
+        try {
+            // Preparo
+            _pst = _con.prepareStatement(sql);
+            // Indico que o primeiro ? significa o ID
+            _pst.setInt(1, novo_produto.getIdProduto());
+            // Executo a pesquisa
+            _pst.executeUpdate();
+            _sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+            _sucesso = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return _sucesso;
+    }
 }

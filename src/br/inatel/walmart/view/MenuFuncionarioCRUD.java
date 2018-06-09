@@ -7,8 +7,9 @@ package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.ControleProdutos;
 import br.inatel.walmart.model.Produto;
-import br.inatel.walmart.control.AtualizaTabela;
+import br.inatel.walmart.control.AtualizaTabelaProdutos;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MenuFuncionarioCRUD extends javax.swing.JFrame {
 
-    ControleProdutos listaRemedios = new ControleProdutos();
+    ControleProdutos listaProdutos = new ControleProdutos();
     //AtualizaTabela updateTable;
     //Thread upTable;
 
@@ -60,6 +61,9 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -175,11 +179,12 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        addProduto registroRemedio = new addProduto(listaRemedios);
+        addProduto registroRemedio = new addProduto(listaProdutos);
         registroRemedio.setVisible(true);
         boolean JaCadastrou = true;
 
@@ -187,30 +192,30 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaRemedios.size() != 0) {
+        if (listaProdutos.size() != 0) {
             Produto remedio = new Produto();
-            remedio = listaRemedios.getProduto(jTable.getSelectedRow());
-            EditarProduto edit = new EditarProduto(remedio, listaRemedios, jTable.getSelectedRow());
+            remedio = listaProdutos.getProduto(jTable.getSelectedRow());
+            editProduto edit = new editProduto(remedio, listaProdutos, jTable.getSelectedRow());
             edit.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (listaRemedios.size() != 0) {
-            for (int i = 0; i < listaRemedios.size(); i++) {
-                jTable.setValueAt(listaRemedios.getNomeProduto(i), i, 0);
-                jTable.setValueAt(listaRemedios.getDataVencimento(i), i, 1);
-                jTable.setValueAt(listaRemedios.getQuantidadeDisponivel(i), i, 2);
+        if (listaProdutos.size() != 0) {
+            for (int i = 0; i < listaProdutos.size(); i++) {
+                jTable.setValueAt(listaProdutos.getNomeProduto(i), i, 0);
+                jTable.setValueAt(listaProdutos.getDataVencimento(i), i, 1);
+                jTable.setValueAt(listaProdutos.getQuantidadeDisponivel(i), i, 2);
             }
         }
-
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        if (listaRemedios.size() != 0 && op==0) {
+        if (listaProdutos.size() != 0 && op==0) {
             int index = jTable.getSelectedRow();
-            listaRemedios.excluir(index);
+            listaProdutos.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
             ((DefaultTableModel)jTable.getModel()).removeRow(index);
         }
@@ -220,6 +225,10 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
         new menuGerente().setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

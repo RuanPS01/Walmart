@@ -14,7 +14,7 @@ import javax.swing.JTable;
  *
  * @author ruanp
  */
-public class AtualizaTabela implements Runnable{
+public class AtualizaTabelaProdutos implements Runnable{
     
     private JTable tabela;
     private ControleProdutos produtos = new ControleProdutos();
@@ -26,9 +26,9 @@ public class AtualizaTabela implements Runnable{
             atualizaTabela(produtos);
             System.out.println("Tabela atualizada!");
             Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(AtualizaTabela.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+            } catch (InterruptedException ex) {
+                Logger.getLogger(AtualizaTabelaProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            } 
         }  
     }
     
@@ -37,7 +37,7 @@ public class AtualizaTabela implements Runnable{
             for (int i = 0; i < listaProdutos.size(); i++) {
                 tabela.setValueAt(listaProdutos.getNomeProduto(i), i, 0);
                 tabela.setValueAt(listaProdutos.getDataVencimento(i), i, 1);
-                tabela.setValueAt(listaProdutos.getQuantidadeDisponivel(i), i, 2);
+                tabela.setValueAt(listaProdutos.getQuantidadeDisponivel(i), i, 2);               
             }
         }        
     }
@@ -50,11 +50,11 @@ public class AtualizaTabela implements Runnable{
         this.tabela = tabela;
     }
 
-    public ControleProdutos getProdutos() {
+    public ControleProdutos getProduto() {
         return produtos;
     }
 
-    public void setRemedios(ControleProdutos produtos) {
+    public void setProduto(ControleProdutos produtos) {
         this.produtos = produtos;
     }
     
