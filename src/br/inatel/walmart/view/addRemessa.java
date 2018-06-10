@@ -28,7 +28,7 @@ public class addRemessa extends javax.swing.JFrame {
         ListaRemessas = ListaDeRemessas;
     }
 
-    private addRemessa() {
+    addRemessa() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -6,7 +6,6 @@
 package br.inatel.walmart.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,15 +35,16 @@ public class ProdutoBancoDAO {
     // Usuario do Banco
     private String _user = "root";
     // Senha do Banco
-    private String _password = "ensleyn";
+    private String _password = "root";
     // Variavel que indicara se uma operacao foi feita com sucesso ou nao
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
     // CADA COLUNA DE UMA TABELA DEVE POSSUIR UMA VARIAVEL QUE A REPRESENTE NA SUA RESPECTIVA DAO
     private int idProduto;
-    private String observacao, nomeProduto, precoProduto, empresaProduto, barcodeProduto;     
-    private LocalDate dataVencimentoProduto;
-    private double quantidadeDisponivelProduto;
+    private String nomeProduto, observacao, empresaProduto, barcodeProduto, dataVencimentoProduto;
+    private LocalDate localDateVencimentoProduto;
+    private int quantidadeDisponivelProduto = 0; 
+    private double precoProduto;
     //---------------------------------------------------------------------
     
     private ProdutoBancoDAO(){
@@ -83,14 +83,14 @@ public class ProdutoBancoDAO {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, novo_produto.getIdProduto());
-            _pst.setDouble(2, novo_produto.getPrecoProduto());
-            _pst.setString(3, novo_produto.getNomeProduto());
-            _pst.setString(4, novo_produto.getObservacao());
-            _pst.setString(5, novo_produto.getEmpresaProduto());
-            _pst.setString(6, novo_produto.getBarcodeProduto());
-            _pst.setString(7, novo_produto.getDataStringVencimento());
-            _pst.setInt(8, novo_produto.getQuantidadeDisponivelProduto());
+            _pst.setInt(1, novo_produto.getIdProduto());                // ID
+            _pst.setDouble(2, novo_produto.getPrecoProduto());          // PRECO
+            _pst.setString(3, novo_produto.getNomeProduto());           // NOME
+            _pst.setString(4, novo_produto.getObservacao());            // OBSERVACAO
+            _pst.setString(5, novo_produto.getEmpresaProduto());        // EMPRESA
+            _pst.setString(6, novo_produto.getBarcodeProduto());        // CODIGO DE BARRAS
+            _pst.setString(7, novo_produto.getDataStringVencimento());  // DATA DE VENCIMENTO
+            _pst.setInt(8, novo_produto.getQuantidadeDisponivelProduto()); // QUANTIDADE DISPONIVEL
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
