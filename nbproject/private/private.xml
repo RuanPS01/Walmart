@@ -2,20 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Produto.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Funcionario.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/ControleProdutos.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Remessa.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/FuncionarioBancoDAO.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Cliente.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/ProdutoBancoDAO.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/RemessaBancoDAO.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addProduto.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/AtualizaTabela.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/EditarProduto.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/Walmart.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/ClienteBancoDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
