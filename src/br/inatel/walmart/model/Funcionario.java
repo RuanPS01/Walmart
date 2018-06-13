@@ -12,6 +12,16 @@ package br.inatel.walmart.model;
 public class Funcionario {
     private int cpfFuncionario;
     private String nomeFuncionario, telefoneFuncionario, nascimentoFuncionario, emailFuncionario, enderecoFuncionario;
+    private String senhaFuncionario;
+    private String usuarioFuncionario;
+
+    public void setSenhaFuncionario(String senhaFuncionario) {
+        this.senhaFuncionario = senhaFuncionario;
+    }
+
+    public void setUsuarioFuncionario(String usuarioFuncionario) {
+        this.usuarioFuncionario = usuarioFuncionario;
+    }
 
     public int getCpfFuncionario() {
         return cpfFuncionario;
@@ -59,6 +69,14 @@ public class Funcionario {
 
     public void setEnderecoFuncionario(String enderecoFuncionario) {
         this.enderecoFuncionario = enderecoFuncionario;
+    }
+
+    public String getUsuarioFuncionario() {
+        return this.senhaFuncionario;
+    }
+
+    public String getSenhaFuncionario() {
+        return this.usuarioFuncionario;
     }
     
     

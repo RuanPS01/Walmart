@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 /**
  *
@@ -33,7 +34,7 @@ public class FuncionarioBancoDAO {
     // Usuario do Banco
     private String _user = "root";
     // Senha do Banco
-    private String _password = "root";
+    private String _password = "";
     // Variavel que indicara se uma operacao foi feita com sucesso ou nao
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
@@ -72,7 +73,7 @@ public class FuncionarioBancoDAO {
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO funcionario(cpfFuncionario,nomeFuncionario,emailFuncionario,telefoneFuncionario,enderecoFuncionario,nascimentoFuncionario) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO funcionario(cpfFuncionario,nomeFuncionario,emailFuncionario,telefoneFuncionario,enderecoFuncionario,nascimentoFuncionario) VALUES (?,?,?,?,?,?,?,?)";
 
         try {
             // Preparo a insercao
@@ -84,6 +85,9 @@ public class FuncionarioBancoDAO {
             _pst.setString(4, novo_funcionario.getTelefoneFuncionario());   // TELEFONE
             _pst.setString(5, novo_funcionario.getEnderecoFuncionario());   // ENDERECO
             _pst.setString(6, novo_funcionario.getNascimentoFuncionario()); // DATA DE NASCIMENTO
+            _pst.setString(7, novo_funcionario.getUsuarioFuncionario());
+            _pst.setString(8, novo_funcionario.getSenhaFuncionario());
+            
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
@@ -145,5 +149,46 @@ public class FuncionarioBancoDAO {
             }
         }
         return _sucesso;
+    }
+    
+    public String checaLogin(String usuario, String senha){
+        Statement _stm = null;
+        String query = "SELECT * FROM funcionario WHERE usuarioFuncionario = ? AND senhaFuncionario = ?";
+        try {
+            conectaBanco();
+            _pst = _con.prepareStatement(query);
+            _pst.setString(1, usuario);
+            _pst.setString(2, senha);
+            _rs = _pst.executeQuery();
+            System.out.println("Sent queries.");
+            
+            while(_rs.next()){
+                if((Objects.equals(_rs.getString("usuarioFuncionario"), usuario)) && (Objects.equals(_rs.getString("senhaFuncionario"), senha))){
+                    System.out.println("Found matching login information.");
+                    return _rs.getString("nomeFuncionario");
+                }
+            }
+            //Não encontrou usuário, retorna nome vazio
+            return "";
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        finally{
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return "";
     }
 }

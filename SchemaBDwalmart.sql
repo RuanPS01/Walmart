@@ -48,5 +48,9 @@ CREATE TABLE IF NOT EXISTS Funcionario(
 );
 flush privileges;
 
+insert into funcionario values('22552', 'Pedro Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
 select * from remessa;
 select * from cliente;
+
+
+SELECT * FROM funcionario WHERE usuarioFuncionario = 'polez' AND senhaFuncionario = 'root';

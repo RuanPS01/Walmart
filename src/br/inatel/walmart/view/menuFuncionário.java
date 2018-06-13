@@ -11,10 +11,17 @@ package br.inatel.walmart.view;
  */
 public class menuFuncionário extends javax.swing.JFrame {
 
+    private static String loggedUser;
     /**
      * Creates new form menuFuncionário
      */
-    public menuFuncionário() {
+    public menuFuncionário(String username) {
+        initComponents();
+        loggedUser = username;
+        LoggedUser.setText("Usuário: "+loggedUser);
+    }
+    
+        public menuFuncionário() {
         initComponents();
     }
 
@@ -32,7 +39,7 @@ public class menuFuncionário extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        LoggedUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(java.awt.Color.lightGray);
@@ -64,7 +71,7 @@ public class menuFuncionário extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Usuário: ");
+        LoggedUser.setText("Usuário: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,7 +79,7 @@ public class menuFuncionário extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(LoggedUser)
                 .addGap(0, 207, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -105,7 +112,7 @@ public class menuFuncionário extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(LoggedUser)
                 .addContainerGap())
         );
 
@@ -161,17 +168,17 @@ public class menuFuncionário extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menuFuncionário().setVisible(true);
+                new menuFuncionário("lol").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LoggedUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

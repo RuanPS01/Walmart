@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class MenuFuncionarioCRUD extends javax.swing.JFrame {
 
     ControleProdutos listaFuncionarios = new ControleProdutos();
+    
     //AtualizaTabela updateTable;
     //Thread upTable;
 
@@ -171,7 +172,7 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        addProduto registroRemedio = new addProduto(listaFuncionarios);
+        addProduto registroRemedio = new addProduto();
         registroRemedio.setVisible(true);
         boolean JaCadastrou = true;
 
