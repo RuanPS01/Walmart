@@ -23,14 +23,14 @@ public class addRemessa extends javax.swing.JFrame {
     ControleRemessas ListaRemessas;
     Remessa remessaTemp = new Remessa();
     
-    public addRemessa(ControleRemessas ListaDeRemessas) {
+    public addRemessa(){//ControleRemessas ListaDeRemessas) {
         initComponents();
-        ListaRemessas = ListaDeRemessas;
+        //ListaRemessas = ListaDeRemessas;
     }
 
-    addRemessa() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    //addRemessa() {
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,6 +225,12 @@ public class addRemessa extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(addRemessa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

@@ -19,14 +19,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MenuClientesCRUD extends javax.swing.JFrame {
 
-    ControleProdutos listaRemedios = new ControleProdutos();
-    //AtualizaTabela updateTable;
-    //Thread upTable;
+    ControleProdutos listaClientes = new ControleProdutos();
 
-    //ControleRemedios ListaRemedios = new ControleRemedios();
-    /**
-     * Creates new form MenuDeRemedios
-     */
     public MenuClientesCRUD() {
         initComponents();
         //updateTable = new AtualizaTabela();
@@ -178,29 +172,25 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //TODO: REMOVE LEGACY COMMENTED CODE!
-        //RegistroProduto registroRemedio = new RegistroProduto(listaRemedios);
-        //registroRemedio.setVisible(true);
-        //boolean JaCadastrou = true;
         new addCliente().setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaRemedios.size() != 0) {
+        if (listaClientes.size() != 0) {
             Produto remedio = new Produto();
-            remedio = listaRemedios.getProduto(jTable.getSelectedRow());
-            editProduto edit = new editProduto(remedio, listaRemedios, jTable.getSelectedRow());
+            remedio = listaClientes.getProduto(jTable.getSelectedRow());
+            editProduto edit = new editProduto(remedio, listaClientes, jTable.getSelectedRow());
             edit.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (listaRemedios.size() != 0) {
-            for (int i = 0; i < listaRemedios.size(); i++) {
-                jTable.setValueAt(listaRemedios.getNomeProduto(i), i, 0);
-                jTable.setValueAt(listaRemedios.getDataVencimento(i), i, 1);
-                jTable.setValueAt(listaRemedios.getQuantidadeDisponivel(i), i, 2);
+        if (listaClientes.size() != 0) {
+            for (int i = 0; i < listaClientes.size(); i++) {
+                jTable.setValueAt(listaClientes.getNomeProduto(i), i, 0);
+                jTable.setValueAt(listaClientes.getDataVencimento(i), i, 1);
+                jTable.setValueAt(listaClientes.getQuantidadeDisponivel(i), i, 2);
             }
         }
 
@@ -208,9 +198,9 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        if (listaRemedios.size() != 0 && op==0) {
+        if (listaClientes.size() != 0 && op==0) {
             int index = jTable.getSelectedRow();
-            listaRemedios.excluir(index);
+            listaClientes.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
             ((DefaultTableModel)jTable.getModel()).removeRow(index);
         }

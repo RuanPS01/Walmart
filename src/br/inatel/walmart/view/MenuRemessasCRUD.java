@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MenuRemessasCRUD extends javax.swing.JFrame {
 
-    ControleProdutos listaRemedios = new ControleProdutos();
+    ControleProdutos listaRemessas = new ControleProdutos();
     //AtualizaTabela updateTable;
     //Thread upTable;
 
@@ -185,20 +185,20 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaRemedios.size() != 0) {
+        if (listaRemessas.size() != 0) {
             Produto remedio = new Produto();
-            remedio = listaRemedios.getProduto(jTable.getSelectedRow());
-            editProduto edit = new editProduto(remedio, listaRemedios, jTable.getSelectedRow());
+            remedio = listaRemessas.getProduto(jTable.getSelectedRow());
+            editProduto edit = new editProduto(remedio, listaRemessas, jTable.getSelectedRow());
             edit.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (listaRemedios.size() != 0) {
-            for (int i = 0; i < listaRemedios.size(); i++) {
-                jTable.setValueAt(listaRemedios.getNomeProduto(i), i, 0);
-                jTable.setValueAt(listaRemedios.getDataVencimento(i), i, 1);
-                jTable.setValueAt(listaRemedios.getQuantidadeDisponivel(i), i, 2);
+        if (listaRemessas.size() != 0) {
+            for (int i = 0; i < listaRemessas.size(); i++) {
+                jTable.setValueAt(listaRemessas.getNomeProduto(i), i, 0);
+                jTable.setValueAt(listaRemessas.getDataVencimento(i), i, 1);
+                jTable.setValueAt(listaRemessas.getQuantidadeDisponivel(i), i, 2);
             }
         }
 
@@ -206,9 +206,9 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        if (listaRemedios.size() != 0 && op==0) {
+        if (listaRemessas.size() != 0 && op==0) {
             int index = jTable.getSelectedRow();
-            listaRemedios.excluir(index);
+            listaRemessas.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
             ((DefaultTableModel)jTable.getModel()).removeRow(index);
         }

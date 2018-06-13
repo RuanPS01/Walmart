@@ -21,14 +21,14 @@ public class addCliente extends javax.swing.JFrame {
     ControleClientes ListaClientes;
     Cliente clienteTemp = new Cliente();
     
-    public addCliente(ControleClientes ListaDeClientes) {
+    public addCliente(){//ControleClientes ListaDeClientes) {
         initComponents();
-        ListaClientes = ListaDeClientes;
+        //ListaClientes = ListaDeClientes;
     }
 
-    addCliente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    //addCliente() {
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
 
     /**
      * This method is called from within the constructor to initialize the form.

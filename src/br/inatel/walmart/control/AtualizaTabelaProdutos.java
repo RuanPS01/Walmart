@@ -8,7 +8,7 @@ import br.inatel.walmart.control.ControleProdutos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
-//import br.inatel.medlar.view.MenuDeRemedios;
+
 
 /**
  *
