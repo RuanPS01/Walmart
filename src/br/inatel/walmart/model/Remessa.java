@@ -13,8 +13,7 @@ import java.util.Date;
  */
 public class Remessa {
     private int idRemessa;
-    private String tipoRemessa, empresaRemessa, funcionarioRemessa, horaRemessa;
-    private Date dataRemessa;
+    private String tipoRemessa, empresaRemessa, funcionarioRemessa, horaRemessa, dataRemessa;
 
     public int getId() {
         return idRemessa;
@@ -56,11 +55,11 @@ public class Remessa {
         this.horaRemessa = hora;
     }
 
-    public Date getData() {
+    public String getData() {
         return dataRemessa;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.dataRemessa = data;
     }
     

@@ -6,60 +6,72 @@
 package br.inatel.walmart.control;
 
 import br.inatel.walmart.model.Cliente;
-import br.inatel.walmart.model.Produto;
-import java.util.List;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-/**Classe de controle dos remédios em uma lista
- *
- * @author ruanp
- */
 public class ControleClientes {
-    List<Cliente> ListaClientes = new ArrayList<>();
     
-    /** Método para
-     * 
-    */
-    public boolean addCliente(Cliente cliente){
+    //Variáveis de controle do banco
+    private Connection _con = null;
+    private ResultSet _set = null;
+    private Statement _st = null;
+    private PreparedStatement _ps = null;
+    private String _url = "jdbc:mysql://localhost:3306/" + "walmart";
+    private String _user = "root";
+    private String _password = "";
+    private boolean _success = false;
+    
+    //Variáveis do Cliente
+    private int cpfCliente;
+    private String nomeCliente;
+    private String emailCliente;
+    private String telefoneCliente;
+    private String enderecoCliente;
+    private String nascimentoCliente;
+    
+    //Singleton instance
+    private static ControleClientes client;
+    private ControleClientes(){
         
-        System.out.println("-------------------------");
-        System.out.println(cliente.getNomeCliente());
-        
-        ListaClientes.add(cliente);
-        
-        for (int i = 0; i < ListaClientes.size(); i++) {
-            if(i==0)System.out.println("-----------------Listagem dos já cadastrados-----------------");
-            System.out.println(ListaClientes.get(i).getNomeCliente());
+    }
+    
+    public synchronized static ControleClientes getInstance(){
+        if(client == null){
+            client = new ControleClientes();
         }
-       return true; 
+        return client;
     }
     
-    //Metodo para adicionar o dado na posição indicada
-    public void addClienteAt(Cliente cliente, int index){
-        ListaClientes.remove(index);
-        ListaClientes.add(index, cliente);
+    //Métodos 
+    public void conectaBD(){
+        try {
+            _con = DriverManager.getConnection(_url, _user, _password);
+            System.out.println("Conexão iniciada com o banco de dados.");
+        } catch (SQLException e) {
+            System.out.println("Não foi possível conectar ao BD! :0");
+            System.out.println("Mensagem de erro: "+e.getMessage());
+        }
     }
     
-    //Método para pegar o dado completo da lista
-    public Cliente getCliente(int index){
-        return ListaClientes.get(index);   
+    public void addCliente(Cliente cliente){
+        //Conecta ao banco de dados
+        conectaBD();
+        
+        //Comando do SQL
+        String comando = "INSERT INTO cliente VALUES (?, ?, ?, ?, ?, ?)";
+        
+        try {
+            _ps = _con.prepareStatement(comando);
+            
+            //Define os valores da string
+            _ps.setString(1, cliente.getEnderecoCliente());
+        } catch (Exception e) {
+        }
     }
     
-    //Metodo para remover o dado da lista
-    public void excluir(int index){
-        ListaClientes.remove(index);    
-    }
-    
-    public int size(){
-        return ListaClientes.size();
-    }
-
-    public List<Cliente> getListaClientes() {
-        return ListaClientes;
-    }
-
-    public void setListaClientes(List<Cliente> ListaClientes) {
-        this.ListaClientes = ListaClientes;
-    }
     
 }

@@ -11,14 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 /**
  *
  * @author 1513 MXTI
  */
-public class RemessaBancoDAO {
-    private static RemessaBancoDAO remessaDAO;
+public class LoginDAO {
+    private static LoginDAO login;
     
     // Abre conexao com o Banco
     private Connection _con = null;
@@ -39,22 +38,22 @@ public class RemessaBancoDAO {
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
     // CADA COLUNA DE UMA TABELA DEVE POSSUIR UMA VARIAVEL QUE A REPRESENTE NA SUA RESPECTIVA DAO
-    private int idRemessa;
-    private String tipoRemessa, empresaRemessa, funcionarioRemessa, horaRemessa, dataRemessa;
+    private int cpfFuncionario;
+    private String nomeFuncionario, telefoneFuncionario, nascimentoFuncionario, emailFuncionario, enderecoFuncionario;
     //---------------------------------------------------------------------
     
-    private RemessaBancoDAO(){
+    private LoginDAO(){
         
     }
     
-    public synchronized static RemessaBancoDAO getInstance(){
-        if(remessaDAO == null){
-            remessaDAO = new RemessaBancoDAO();
+    public synchronized static LoginDAO getInstance(){
+        if(login == null){
+            login = new LoginDAO();
         }       
-        return remessaDAO;
+        return login;
     }
     
-    // IMPLEMENTANDO O CRUD de Usuario
+    // IMPLEMENTANDO O CRUD de Login
     // (0) CONNECT: Metodo usado para abrir conexao com o banco.
     
     public void conectaBanco() {
@@ -68,28 +67,30 @@ public class RemessaBancoDAO {
     }
     
     // (1) INSERT: Insere novo Usuario
-    public boolean insere(Remessa nova_remessa) {
+    public boolean insere(Cliente novo_cliente) {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO remessa(idRemessa,dataRemessa,horaRemessa,empresaRemessa,funcionarioRemessa) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO cliente(cpfCliente,nomeCliente,emailCiente,telefoneCliente,enderecoCliente,nascimentoCliente) VALUES (?,?,?,?,?,?,?,?)";
 
         try {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, nova_remessa.getId());                    // ID
-            _pst.setString(2, nova_remessa.getData());              // DATA
-            _pst.setString(3, nova_remessa.getHora());               // HORA
-            _pst.setString(4, nova_remessa.getEmpresa());            // EMPRESA
-            _pst.setString(5, nova_remessa.getFuncionario());        // FUNCIONARIO
+            _pst.setInt(1, novo_cliente.getCpfCliente());           // CPF
+            _pst.setString(2, novo_cliente.getNomeCliente());       // NOME
+            _pst.setString(3, novo_cliente.getEmailCiente());       // EMAIL
+            _pst.setString(4, novo_cliente.getTelefoneCliente());   // TELEFONE
+            _pst.setString(5, novo_cliente.getEnderecoCliente());   // ENDERECO
+            _pst.setString(6, novo_cliente.getNascimentoCliente()); // DATA DE NASCIMENTO
+            _pst.setString(7, novo_cliente.getUsuarioCliente());
+            _pst.setString(8, novo_cliente.getSenhaCliente());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
-            System.out.println("Mensagem do erro: "+ex.getMessage());
             _sucesso = false;
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
@@ -111,18 +112,18 @@ public class RemessaBancoDAO {
     }
     
     // (1) DELETE: Deleta um Usuario
-    public boolean deleta(Remessa nova_remessa) {
+    public boolean deleta(Cliente novo_cliente) {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM remessa WHERE idRemessa = ?";
+        String sql = "DELETE FROM cliente WHERE cpfCliente = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, nova_remessa.getId());
+            _pst.setInt(1, novo_cliente.getCpfCliente());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
@@ -147,5 +148,8 @@ public class RemessaBancoDAO {
         }
         return _sucesso;
     }
+    
+    public void verificaLogin(String usuario, String senha){
+        String query = "select * from "
+    }
 }
-

@@ -29,11 +29,11 @@ public class ClienteBancoDAO {
     private PreparedStatement _pst = null;
     // String indicando com qual schema havera conexao (livrariaacme)
     // Obs: Cada driver possui uma sintaxe diferente para a url
-    private String _url = "jdbc:mysql://localhost:3306/" + "padrao";
+    private String _url = "jdbc:mysql://localhost:3306/" + "walmart";
     // Usuario do Banco
     private String _user = "root";
     // Senha do Banco
-    private String _password = "root";
+    private String _password = "";
     // Variavel que indicara se uma operacao foi feita com sucesso ou nao
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
@@ -82,7 +82,7 @@ public class ClienteBancoDAO {
             _pst.setString(2, novo_cliente.getNomeCliente());       // NOME
             _pst.setString(3, novo_cliente.getEmailCiente());       // EMAIL
             _pst.setString(4, novo_cliente.getTelefoneCliente());   // TELEFONE
-            _pst.setString(5, novo_cliente.getTelefoneCliente());   // ENDERECO
+            _pst.setString(5, novo_cliente.getEnderecoCliente());   // ENDERECO
             _pst.setString(6, novo_cliente.getNascimentoCliente()); // DATA DE NASCIMENTO
             // Executo a pesquisa
             _pst.executeUpdate();

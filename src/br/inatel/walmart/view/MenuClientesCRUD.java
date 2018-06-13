@@ -23,11 +23,6 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
 
     public MenuClientesCRUD() {
         initComponents();
-        //updateTable = new AtualizaTabela();
-        //upTable = new Thread(updateTable);
-        //upTable.start();
-        //jTable = updateTable.getTabela();
-        
     }
    
     /**
@@ -88,24 +83,15 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         });
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, clienteList, jTable);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nascimentoCliente}"));
-        columnBinding.setColumnName("Nascimento Cliente");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${enderecoCliente}"));
-        columnBinding.setColumnName("Endereco Cliente");
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeCliente}"));
+        columnBinding.setColumnName("Nome Cliente");
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${telefoneCliente}"));
         columnBinding.setColumnName("Telefone Cliente");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${emailCiente}"));
-        columnBinding.setColumnName("Email Ciente");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${enderecoCliente}"));
+        columnBinding.setColumnName("Endereco Cliente");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeCliente}"));
-        columnBinding.setColumnName("Nome Cliente");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cpfCliente}"));
-        columnBinding.setColumnName("Cpf Cliente");
-        columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(jTable);

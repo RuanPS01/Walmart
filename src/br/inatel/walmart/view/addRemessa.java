@@ -7,6 +7,7 @@ package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.ControleRemessas;
 import br.inatel.walmart.model.Remessa;
+import br.inatel.walmart.model.RemessaBancoDAO;
 import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -190,12 +191,12 @@ public class addRemessa extends javax.swing.JFrame {
     }
     private void CONFIRM_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRM_ProdutoActionPerformed
         remessaTemp.setTipo(TIPO_textBoxRemessa.getText());
-        remessaTemp.setData(convertLocalDateToDate((LocalDate.of(Integer.parseInt(ANO_textBoxRemessa.getText()), Integer.parseInt(MES_textBoxRemessa.getText()), Integer.parseInt(DIA_textBoxRemessa.getText())))));
+        remessaTemp.setData(DIA_textBoxRemessa.getText()+"/"+MES_textBoxRemessa.getText()+"/"+ANO_textBoxRemessa.getText());
         remessaTemp.setHora(HORA_textBoxRemessa.getText());
         remessaTemp.setEmpresa(EMPRESA_textBoxRemessa.getText());
         remessaTemp.setFuncionario(FUNCIONARIO_textBoxRemessa.getText());
 
-        ListaRemessas.addRemessa(remessaTemp);
+        RemessaBancoDAO.getInstance().insere(remessaTemp);
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
     }//GEN-LAST:event_CONFIRM_ProdutoActionPerformed

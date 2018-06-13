@@ -8,6 +8,7 @@ package br.inatel.walmart.view;
 import br.inatel.walmart.model.Produto;
 import java.time.LocalDate;
 import br.inatel.walmart.control.ControleProdutos;
+import br.inatel.walmart.model.ProdutoBancoDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,13 +23,8 @@ public class addProduto extends javax.swing.JFrame {
     ControleProdutos ListaProdutos;
     Produto produtoTemp = new Produto();
 
-    public addProduto(ControleProdutos ListaDeProdutos) {
+    public addProduto() {
         initComponents();
-        ListaProdutos = ListaDeProdutos;
-    }
-
-    private addProduto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -246,13 +242,13 @@ public class addProduto extends javax.swing.JFrame {
         produtoTemp.setIdProduto(Integer.parseInt(ID_textBoxProduto.getText()));
         produtoTemp.setNomeProduto(NOME_textBoxProduto.getText());
         produtoTemp.setEmpresaProduto(EMPRESA_textBoxProduto.getText());
-        produtoTemp.setPrecoProduto(Integer.parseInt(PRECO_textBoxProduto.getText()));
+        produtoTemp.setPrecoProduto(Double.parseDouble(PRECO_textBoxProduto.getText()));
         produtoTemp.setQuantidadeDisponivelProduto(Integer.parseInt(QUANT_textBoxProduto.getText()));
         produtoTemp.setBarcodeProduto(BARCODE_textBoxProduto.getText());
         produtoTemp.setLocalDateVencimentoProduto(LocalDate.of(Integer.parseInt(ANO_V_textBoxProduto.getText()), Integer.parseInt(MES_V_textBoxProduto.getText()), Integer.parseInt(DIA_V_textBoxProduto.getText())));
         produtoTemp.setObservacao(OBS_textBoxProduto.getText());
 
-        ListaProdutos.addProduto(produtoTemp);
+        ProdutoBancoDAO.getInstance().insere(produtoTemp);
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
 

@@ -29,7 +29,7 @@ public class FuncionarioBancoDAO {
     private PreparedStatement _pst = null;
     // String indicando com qual schema havera conexao (livrariaacme)
     // Obs: Cada driver possui uma sintaxe diferente para a url
-    private String _url = "jdbc:mysql://localhost:3306/" + "padrao";
+    private String _url = "jdbc:mysql://localhost:3306/" + "walmart";
     // Usuario do Banco
     private String _user = "root";
     // Senha do Banco

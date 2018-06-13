@@ -51,6 +51,8 @@ public class Funcionario implements Serializable {
     private String enderecoFuncionario;
     @Column(name = "nascimentoFuncionario")
     private String nascimentoFuncionario;
+    private String usuarioFuncionario;
+    private String senhaFuncionario;
 
     public Funcionario() {
     }
@@ -63,6 +65,22 @@ public class Funcionario implements Serializable {
         return cpfFuncionario;
     }
 
+    public void setUsuarioFuncionario(String u){
+        this.usuarioFuncionario = u;
+    }
+    
+    public void setSenhaFuncionario(String s){
+        this.senhaFuncionario = s;
+    }
+    
+    public String getSenhaFuncionario(){
+        return this.senhaFuncionario;
+    }
+    
+    public String getUsuarioFuncionario(){
+        return this.usuarioFuncionario;
+    }
+    
     public void setCpfFuncionario(Integer cpfFuncionario) {
         Integer oldCpfFuncionario = this.cpfFuncionario;
         this.cpfFuncionario = cpfFuncionario;

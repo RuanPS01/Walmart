@@ -5,8 +5,9 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.control.ControleClientes;
+
 import br.inatel.walmart.model.Cliente;
+import br.inatel.walmart.model.ClienteBancoDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,18 +19,13 @@ public class addCliente extends javax.swing.JFrame {
     /**
      * Creates new form addFuncionario
      */
-    ControleClientes ListaClientes;
     Cliente clienteTemp = new Cliente();
     
-    public addCliente(){//ControleClientes ListaDeClientes) {
+    public addCliente(){
         initComponents();
-        //ListaClientes = ListaDeClientes;
     }
 
-    //addCliente() {
-    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    //}
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -211,7 +207,8 @@ public class addCliente extends javax.swing.JFrame {
         clienteTemp.setEmailCiente(EMAIL_textBoxCliente.getText());
         clienteTemp.setTelefoneCliente(TELEFONE_textBoxCliente.getText());
 
-        ListaClientes.addCliente(clienteTemp);
+        //Adiciona o cliente no banco de dados
+        ClienteBancoDAO.getInstance().insere(clienteTemp);
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
 
