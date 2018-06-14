@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author Polez
  */
 public class loginWindow extends javax.swing.JFrame {
-
+    public static String loggedUser;
     /**
      * Creates new form loginWindow
      */
@@ -122,9 +122,11 @@ public class loginWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         String result = FuncionarioBancoDAO.getInstance().checaLogin(user_field.getText(), String.valueOf(pass_field.getPassword()));
         if(Objects.equals(result, "")){
-            JOptionPane.showConfirmDialog(null, "Nome de usuário ou senha incorretos.");
+            JOptionPane.showMessageDialog(null, "Nome de usuário ou senha incorretos.");
         }else{
-            new menuFuncionário(result).setVisible(true);
+            loginWindow.loggedUser = result;
+            new menuFuncionário().setVisible(true);
+            this.setVisible(false);
         }
         //
         //this.dispose();

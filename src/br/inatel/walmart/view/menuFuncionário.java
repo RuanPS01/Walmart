@@ -11,19 +11,15 @@ package br.inatel.walmart.view;
  */
 public class menuFuncionário extends javax.swing.JFrame {
 
-    private static String loggedUser;
+    public static String loggedUser;
     /**
      * Creates new form menuFuncionário
      */
-    public menuFuncionário(String username) {
+    public menuFuncionário() {
         initComponents();
-        loggedUser = username;
-        LoggedUser.setText("Usuário: "+loggedUser);
+        LoggedUser.setText("Usuário: "+loginWindow.loggedUser);
     }
     
-        public menuFuncionário() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,7 +164,7 @@ public class menuFuncionário extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menuFuncionário("lol").setVisible(true);
+                //new menuFuncionário("lol").setVisible(true);
             }
         });
     }
