@@ -172,23 +172,14 @@
           </Properties>
           <BindingProperties>
             <BindingProperty name="elements" source="funcionarioList" target="jTable" targetPath="elements" updateStrategy="0" immediately="true">
-              <Subbinding sourcePath="${nascimentoFuncionario}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${enderecoFuncionario}">
+              <Subbinding sourcePath="${nomeFuncionario}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${telefoneFuncionario}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
-              <Subbinding sourcePath="${emailFuncionario}">
+              <Subbinding sourcePath="${enderecoFuncionario}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${nomeFuncionario}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${cpfFuncionario}">
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
               </Subbinding>
             </BindingProperty>
           </BindingProperties>

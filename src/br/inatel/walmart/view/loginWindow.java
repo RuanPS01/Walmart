@@ -120,18 +120,21 @@ public class loginWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String result = FuncionarioBancoDAO.getInstance().checaLogin(user_field.getText(), String.valueOf(pass_field.getPassword()));
-        if(Objects.equals(result, "")){
-            JOptionPane.showMessageDialog(null, "Nome de usuário ou senha incorretos.");
-        }else{
-            loginWindow.loggedUser = result;
-            new menuFuncionário().setVisible(true);
+        if((Objects.equals("root", user_field.getText())) && (Objects.equals("root", String.valueOf(pass_field.getPassword())))){
+            new menuGerente().setVisible(true);
+            loginWindow.loggedUser = "Root";
             this.setVisible(false);
-        }
-        //
-        //this.dispose();
+        }else{
+            String result = FuncionarioBancoDAO.getInstance().checaLogin(user_field.getText(), String.valueOf(pass_field.getPassword()));
+            if(Objects.equals(result, "")){
+                JOptionPane.showMessageDialog(null, "Nome de usuário ou senha incorretos.");
+            }else{
+                loginWindow.loggedUser = result;
+               new menuFuncionário().setVisible(true);
+               this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    }
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1KeyPressed
