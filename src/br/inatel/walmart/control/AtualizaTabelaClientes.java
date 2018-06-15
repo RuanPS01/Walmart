@@ -15,7 +15,12 @@ import javax.swing.JTable;
  * @author ruanp
  */
 public class AtualizaTabelaClientes implements Runnable{
-    
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    /*
     private JTable tabela;
     private ControleClientes clientes = new ControleClientes();
     
@@ -61,5 +66,5 @@ public class AtualizaTabelaClientes implements Runnable{
         this.clientes = cliente;
     }
     
-    
+    */
 }

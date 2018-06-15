@@ -146,4 +146,47 @@ public class ClienteBancoDAO {
         }
         return _sucesso;
     }
+    
+    // (1) UPDATE NomeTabela SET atributo1 = valor1, atributo2 = valor2 WHERE atributo3 = 'valor1';
+    public boolean edita(Cliente novo_cliente) {
+        // Conecto com o Banco
+        conectaBanco();
+        // Faz a consulta
+        String sql = "UPDATE cliente SET cpfCliente = ?, nomeCliente = ?,emailCiente = ?,telefoneCliente = ?,enderecoCliente = ?,nascimentoCliente = ? WHERE cpfCliente = ?";
+
+        try {
+            // Preparo
+            _pst = _con.prepareStatement(sql);
+            // Indico que o primeiro ? significa o ID
+            _pst.setInt(1, novo_cliente.getCpfCliente());
+            _pst.setString(2, novo_cliente.getNomeCliente());
+            _pst.setString(3, novo_cliente.getEmailCiente());
+            _pst.setString(4, novo_cliente.getTelefoneCliente());
+            _pst.setString(5, novo_cliente.getEnderecoCliente());
+            _pst.setString(6, novo_cliente.getNascimentoCliente());
+            _pst.setInt(7, novo_cliente.getCpfCliente());
+            // Executo a pesquisa
+            _pst.executeUpdate();
+            _sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+            _sucesso = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return _sucesso;
+    }
 }

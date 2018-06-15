@@ -7,6 +7,7 @@ package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.ControleFuncionarios;
 import br.inatel.walmart.model.Funcionario;
+import br.inatel.walmart.model.FuncionarioBancoDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -238,8 +239,9 @@ public class addFuncionario extends javax.swing.JFrame {
         funcionarioTemp.setNascimentoFuncionario(DIA_textBoxFuncionario.getText()+"/"+MES_textBoxFuncionario.getText()+"/"+ANO_textBoxFuncionario.getText());
         funcionarioTemp.setEmailFuncionario(EMAIL_textBoxFuncionario.getText());
         funcionarioTemp.setTelefoneFuncionario(TELEFONE_textBoxFuncionario.getText());
-
-        ListaFuncionarios.addProduto(funcionarioTemp);
+        
+        //ListaFuncionarios.addProduto(funcionarioTemp);
+        FuncionarioBancoDAO.getInstance().insere(funcionarioTemp);
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
 

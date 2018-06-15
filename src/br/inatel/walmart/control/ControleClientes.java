@@ -35,7 +35,7 @@ public class ControleClientes {
     
     //Singleton instance
     private static ControleClientes client;
-    private ControleClientes(){
+    public ControleClientes(){
         
     }
     

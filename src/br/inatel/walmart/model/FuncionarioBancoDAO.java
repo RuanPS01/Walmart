@@ -191,4 +191,46 @@ public class FuncionarioBancoDAO {
         }
         return "";
     }
+    // (1) UPDATE NomeTabela SET atributo1 = valor1, atributo2 = valor2 WHERE atributo3 = 'valor1';
+    public boolean edita(Funcionario novo_funcionario) {
+        // Conecto com o Banco
+        conectaBanco();
+        // Faz a consulta
+        String sql = "UPDATE funcionario SET cpfFuncionario = ?,nomeFuncionario = ?,emailFuncionario = ?,telefoneFuncionario = ?,enderecoFuncionario = ?,nascimentoFuncionario = ? WHERE cpfFuncionario = ?";
+
+        try {
+            // Preparo
+            _pst = _con.prepareStatement(sql);
+            // Indico que o primeiro ? significa o ID
+            _pst.setInt(1, novo_funcionario.getCpfFuncionario());
+            _pst.setString(2, novo_funcionario.getNomeFuncionario());
+            _pst.setString(3, novo_funcionario.getEmailFuncionario());
+            _pst.setString(4, novo_funcionario.getTelefoneFuncionario());
+            _pst.setString(5, novo_funcionario.getEnderecoFuncionario());
+            _pst.setString(6, novo_funcionario.getNascimentoFuncionario());
+            _pst.setInt(7, novo_funcionario.getCpfFuncionario());
+            // Executo a pesquisa
+            _pst.executeUpdate();
+            _sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+            _sucesso = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return _sucesso;
+    }
 }

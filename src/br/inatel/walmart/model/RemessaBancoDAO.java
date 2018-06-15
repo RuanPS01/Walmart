@@ -147,5 +147,46 @@ public class RemessaBancoDAO {
         }
         return _sucesso;
     }
+    // (1) UPDATE NomeTabela SET atributo1 = valor1, atributo2 = valor2 WHERE atributo3 = 'valor1';
+    public boolean edita(Remessa novo_remessa) {
+        // Conecto com o Banco
+        conectaBanco();
+        // Faz a consulta
+        String sql = "UPDATE remessa SET idRemessa = ?, dataRemessa = ?, horaRemessa = ?, empresaRemessa = ?, funcionarioRemessa = ? WHERE idRemessa = ?";
+
+        try {
+            // Preparo
+            _pst = _con.prepareStatement(sql);
+            // Indico que o primeiro ? significa o ID
+            _pst.setInt(1, novo_remessa.getId());
+            _pst.setString(3, novo_remessa.getData());
+            _pst.setString(4, novo_remessa.getHora());
+            _pst.setString(5, novo_remessa.getEmpresa());
+            _pst.setString(6, novo_remessa.getFuncionario());
+            _pst.setInt(7, novo_remessa.getId());
+
+            _pst.executeUpdate();
+            _sucesso = true;
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+            _sucesso = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return _sucesso;
+    }
 }
 

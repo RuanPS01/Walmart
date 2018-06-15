@@ -6,6 +6,7 @@
 package br.inatel.walmart.view;
 
 import br.inatel.walmart.model.Produto;
+import br.inatel.walmart.model.ProdutoBancoDAO;
 import java.time.LocalDate;
 import br.inatel.walmart.control.ControleProdutos;
 import javax.swing.JOptionPane;
@@ -270,13 +271,15 @@ public class editProduto extends javax.swing.JFrame {
         produtoTemp.setLocalDateVencimentoProduto(LocalDate.of(Integer.parseInt(ANO_V_textBoxProduto.getText()), Integer.parseInt(MES_V_textBoxProduto.getText()), Integer.parseInt(DIA_V_textBoxProduto.getText())));
         produtoTemp.setObservacao(OBS_textBoxProduto.getText());
 
-        ListaProdutos.addProdutoAt(produtoTemp, index);
+        //ListaProdutos.addProdutoAt(produtoTemp, index);
+        ProdutoBancoDAO.getInstance().insere(produtoTemp);
         JOptionPane.showMessageDialog(null, "Registro alterado e salvo com sucesso! ");
         this.dispose();
 
 
     }//GEN-LAST:event_CONFIRM_ProdutoActionPerformed
 
+    
     private void CANCEL_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCEL_ProdutoActionPerformed
         NOME_textBoxProduto.setText("");
         BARCODE_textBoxProduto.setText("");

@@ -94,6 +94,11 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable);
 
         jButton4.setText("Atualizar Tabela");
@@ -155,7 +160,7 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
             remedio = listaClientes.getProduto(jTable.getSelectedRow());
             editProduto edit = new editProduto(remedio, listaClientes, jTable.getSelectedRow());
             edit.setVisible(true);
-        }
+        }      
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -183,6 +188,10 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
         new menuFuncionário().setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableMouseClicked
 
     /**
      * @param args the command line arguments
