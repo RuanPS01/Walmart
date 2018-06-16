@@ -189,4 +189,51 @@ public class ClienteBancoDAO {
         }
         return _sucesso;
     }
+    
+    public Cliente busca(int id) {
+        // Conecto com o Banco
+        conectaBanco();
+        // Faz a consulta
+        String sql = "SELECT * FROM cliente WHERE clienteId = ?";
+
+        try {
+            // Preparo
+            _pst = _con.prepareStatement(sql);
+            // Indico que o primeiro ? significa o ID
+            _pst.setInt(1, id);
+            // Executo a pesquisa
+            _rs = _pst.executeQuery();
+            _sucesso = true;
+            Cliente c = new Cliente();
+            while(_rs.next()){
+                c.setCpfCliente(_rs.getString("cpfCliente"));
+                c.setEmailCiente(_rs.getString("cpfCliente"));
+                c.setEnderecoCliente(_rs.getString("cpfCliente"));
+                c.setCpfCliente(_rs.getString("cpfCliente"));
+                c.setCpfCliente(_rs.getString("cpfCliente"));
+                c.setCpfCliente(_rs.getString("cpfCliente"));
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :( // "+ex.getMessage());
+            _sucesso = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return _sucesso;
+    }
+    
 }
