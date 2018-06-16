@@ -5,6 +5,7 @@
  */
 package br.inatel.walmart.view;
 
+import br.inatel.walmart.control.FuncionarioBancoDAO;
 import br.inatel.walmart.model.Produto;
 import java.awt.Component;
 import java.util.List;
@@ -49,6 +50,8 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("walmart?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         funcionarioQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Funcionario f");
         funcionarioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : funcionarioQuery.getResultList();
+        funcionarioQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Funcionario f");
+        funcionarioList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : funcionarioQuery1.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -95,7 +98,7 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, funcionarioList, jTable);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, funcionarioList1, jTable);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeFuncionario}"));
         columnBinding.setColumnName("Nome Funcionario");
         columnBinding.setColumnClass(String.class);
@@ -159,20 +162,12 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        addProduto registroRemedio = new addProduto();
+        addFuncionario registroRemedio = new addFuncionario();
         registroRemedio.setVisible(true);
-        boolean JaCadastrou = true;
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*if (listaFuncionarios.size() != 0) {
-            Produto remedio = new Produto();
-            remedio = listaFuncionarios.getProduto(jTable.getSelectedRow());
-            editProduto edit = new editProduto(remedio, listaFuncionarios, jTable.getSelectedRow());
-            edit.setVisible(true);
-        }*/
+        new addFuncionario(FuncionarioBancoDAO.getInstance().busca(jTable.getSelectedRow()+1), jTable.getSelectedRow()+1).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -188,12 +183,9 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        /*if (listaFuncionarios.size() != 0 && op==0) {
-            int index = jTable.getSelectedRow();
-            listaFuncionarios.excluir(index);
-            JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
-            ((DefaultTableModel)jTable.getModel()).removeRow(index);
-        }*/
+        if(op == 0){
+            FuncionarioBancoDAO.getInstance().deleta(jTable.getSelectedRow()+1);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -248,7 +240,9 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     private javax.swing.ButtonGroup MostrarPor;
     private javax.persistence.EntityManager entityManager;
     private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList;
+    private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList1;
     private javax.persistence.Query funcionarioQuery;
+    private javax.persistence.Query funcionarioQuery1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

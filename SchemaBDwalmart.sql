@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS Remessa(
 
 drop table if exists Funcionario;
 CREATE TABLE IF NOT EXISTS Funcionario(
+
 	idFuncionario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	cpfFuncionario VARCHAR(30),
     nomeFuncionario VARCHAR(50),
@@ -52,7 +53,8 @@ CREATE TABLE IF NOT EXISTS Funcionario(
 flush privileges;
 
 insert into Produto values('0', '2.00', 'Macarrão', 'É perecível.', 'Maglioni', '0001010100', '12/12/12','15');
-insert into funcionario values('0','134999746-30', 'Pedro Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
+insert into funcionario values('1','1349', 'Pedro Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
+insert into funcionario values('2','1319', 'Pedrao Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
 insert into funcionario values('0', '10323', 'Ruan Patrick', 'ruan@internet.feliz', '9998887', 'Rua Margaridas 12', '24/01/97', 'ruan', 'root');
 select * from remessa;
 select * from cliente;

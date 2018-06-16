@@ -180,12 +180,9 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        /*if (listaRemessas.size() != 0 && op==0) {
-            int index = jTable.getSelectedRow();
-            listaRemessas.excluir(index);
-            JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
-            ((DefaultTableModel)jTable.getModel()).removeRow(index);
-        }*/
+        if(op == 0){
+            RemessaBancoDAO.getInstance().deleta(tableRem.getSelectedRow()+1);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

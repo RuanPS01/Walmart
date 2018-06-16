@@ -113,20 +113,26 @@ public class RemessaBancoDAO {
     }
     
     // (1) DELETE: Deleta um Usuario
-    public boolean deleta(Remessa nova_remessa) {
+    public boolean deleta(int id) {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
         String sql = "DELETE FROM remessa WHERE idRemessa = ?";
+        String sql2 = "ALTER TABLE remessa DROP idRemessa";
+        String sql3 = "ALTER TABLE remessa AUTO_INCREMENT = 1";
+        String sql4 = "ALTER TABLE remessa ADD idRemessa int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, nova_remessa.getId());
+            _pst.setInt(1, id);
             // Executo a pesquisa
             _pst.executeUpdate();
+            _pst.executeUpdate(sql2);
+            _pst.executeUpdate(sql3);
+            _pst.executeUpdate(sql4);
             _sucesso = true;
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");

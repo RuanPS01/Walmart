@@ -19,9 +19,29 @@ public class addFuncionario extends javax.swing.JFrame {
      * Creates new form addFuncionario
      */
     Funcionario funcionarioTemp = new Funcionario();
+    private int editId = 0;
+    private boolean isEdit = false;
     
     public addFuncionario() {
         initComponents();
+    }
+    
+    public addFuncionario(Funcionario f, int id){
+        initComponents();
+        NOME_textBoxFuncionario.setText(f.getNomeFuncionario());
+        ENDERECO_textBoxFuncionario.setText(f.getEnderecoFuncionario());
+        CPF_textBoxFuncionario.setText(f.getCpfFuncionario());
+        String[] partes = f.getNascimentoFuncionario().split("/");
+        DIA_textBoxFuncionario.setText(partes[0]);
+        MES_textBoxFuncionario.setText(partes[1]);
+        ANO_textBoxFuncionario.setText(partes[2]);
+        EMAIL_textBoxFuncionario.setText(f.getEmailFuncionario());
+        TELEFONE_textBoxFuncionario.setText(f.getTelefoneFuncionario());
+        USUARIO_textField.setText(f.getUsuarioFuncionario());
+        SENHA_textField.setText(f.getSenhaFuncionario());
+        isEdit = true;
+        editId = id;
+        label.setText("Edição de funcionário");
     }
 
     /**
@@ -51,7 +71,7 @@ public class addFuncionario extends javax.swing.JFrame {
         ANO_textBoxFuncionario = new javax.swing.JTextField();
         CANCEL_Produto = new javax.swing.JButton();
         CONFIRM_Produto = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         USUARIO_textField = new javax.swing.JTextField();
@@ -91,8 +111,8 @@ public class addFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jLabel9.setText("Regitro de novo funcionário");
+        label.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        label.setText("Regitro de novo funcionário");
 
         jLabel10.setText("Nome de usuário: ");
 
@@ -105,7 +125,7 @@ public class addFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
+                    .addComponent(label)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +184,7 @@ public class addFuncionario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -228,13 +248,20 @@ public class addFuncionario extends javax.swing.JFrame {
     private void CONFIRM_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRM_ProdutoActionPerformed
         funcionarioTemp.setNomeFuncionario(NOME_textBoxFuncionario.getText());
         funcionarioTemp.setEnderecoFuncionario(ENDERECO_textBoxFuncionario.getText());
-        funcionarioTemp.setCpfFuncionario(Integer.parseInt(CPF_textBoxFuncionario.getText()));
+        funcionarioTemp.setCpfFuncionario(CPF_textBoxFuncionario.getText());
         funcionarioTemp.setNascimentoFuncionario(DIA_textBoxFuncionario.getText()+"/"+MES_textBoxFuncionario.getText()+"/"+ANO_textBoxFuncionario.getText());
         funcionarioTemp.setEmailFuncionario(EMAIL_textBoxFuncionario.getText());
         funcionarioTemp.setTelefoneFuncionario(TELEFONE_textBoxFuncionario.getText());
+        funcionarioTemp.setSenhaFuncionario(String.valueOf(SENHA_textField.getPassword()));
+        funcionarioTemp.setUsuarioFuncionario(USUARIO_textField.getText());
         
         //ListaFuncionarios.addProduto(funcionarioTemp);
-        FuncionarioBancoDAO.getInstance().insere(funcionarioTemp);
+        if(isEdit){
+            FuncionarioBancoDAO.getInstance().edita(funcionarioTemp, editId);
+        }else{
+            FuncionarioBancoDAO.getInstance().insere(funcionarioTemp);
+        }
+        
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
 
@@ -298,6 +325,6 @@ public class addFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }

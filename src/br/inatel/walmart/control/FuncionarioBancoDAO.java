@@ -74,26 +74,27 @@ public class FuncionarioBancoDAO {
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO funcionario(cpfFuncionario,nomeFuncionario,emailFuncionario,telefoneFuncionario,enderecoFuncionario,nascimentoFuncionario) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO funcionario(idFuncionario,cpfFuncionario,nomeFuncionario,emailFuncionario,telefoneFuncionario,enderecoFuncionario,nascimentoFuncionario, usuarioFuncionario, senhaFuncionario) VALUES (?,?,?,?,?,?,?,?,?)";
 
         try {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, novo_funcionario.getCpfFuncionario());           // CPF
-            _pst.setString(2, novo_funcionario.getNomeFuncionario());       // NOME
-            _pst.setString(3, novo_funcionario.getEmailFuncionario());      // EMAIL
-            _pst.setString(4, novo_funcionario.getTelefoneFuncionario());   // TELEFONE
-            _pst.setString(5, novo_funcionario.getEnderecoFuncionario());   // ENDERECO
-            _pst.setString(6, novo_funcionario.getNascimentoFuncionario()); // DATA DE NASCIMENTO
-            _pst.setString(7, novo_funcionario.getUsuarioFuncionario());
-            _pst.setString(8, novo_funcionario.getSenhaFuncionario());
+            _pst.setInt(1, 0);
+            _pst.setString(2, novo_funcionario.getCpfFuncionario());           // CPF
+            _pst.setString(3, novo_funcionario.getNomeFuncionario());       // NOME
+            _pst.setString(4, novo_funcionario.getEmailFuncionario());      // EMAIL
+            _pst.setString(5, novo_funcionario.getTelefoneFuncionario());   // TELEFONE
+            _pst.setString(6, novo_funcionario.getEnderecoFuncionario());   // ENDERECO
+            _pst.setString(7, novo_funcionario.getNascimentoFuncionario()); // DATA DE NASCIMENTO
+            _pst.setString(8, novo_funcionario.getUsuarioFuncionario());
+            _pst.setString(9, novo_funcionario.getSenhaFuncionario());
             
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
         } catch (SQLException ex) {
-            System.out.println("Erro: Conexão Banco! :(");
+            System.out.println("Erro: Conexão Banco! :( // "+ex.getMessage());
             _sucesso = false;
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
@@ -115,20 +116,26 @@ public class FuncionarioBancoDAO {
     }
     
     // (1) DELETE: Deleta um Usuario
-    public boolean deleta(Funcionario novo_funcionario) {
+    public boolean deleta(int id) {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM funcionario WHERE cpfFuncionario = ?";
+        String sql = "DELETE FROM funcionario WHERE idFuncionario = ?";
+        String sql2 = "ALTER TABLE funcionario DROP idFuncionario";
+        String sql3 = "ALTER TABLE funcionario AUTO_INCREMENT = 1";
+        String sql4 = "ALTER TABLE funcionario ADD idFuncionario int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_funcionario.getCpfFuncionario());
+            _pst.setInt(1, id);
             // Executo a pesquisa
             _pst.executeUpdate();
+            _pst.executeUpdate(sql2);
+            _pst.executeUpdate(sql3);
+            _pst.executeUpdate(sql4);
             _sucesso = true;
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
@@ -193,28 +200,31 @@ public class FuncionarioBancoDAO {
         return "";
     }
     // (1) UPDATE NomeTabela SET atributo1 = valor1, atributo2 = valor2 WHERE atributo3 = 'valor1';
-    public boolean edita(Funcionario novo_funcionario) {
+    public boolean edita(Funcionario novo_funcionario, int id) {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
-        String sql = "UPDATE funcionario SET cpfFuncionario = ?,nomeFuncionario = ?,emailFuncionario = ?,telefoneFuncionario = ?,enderecoFuncionario = ?,nascimentoFuncionario = ? WHERE cpfFuncionario = ?";
+        String sql = "UPDATE funcionario SET idFuncionario = ?, cpfFuncionario = ?,nomeFuncionario = ?,emailFuncionario = ?,telefoneFuncionario = ?,enderecoFuncionario = ?,nascimentoFuncionario = ?, usuarioFuncionario = ?, senhaFuncionario = ? WHERE idFuncionario = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_funcionario.getCpfFuncionario());
-            _pst.setString(2, novo_funcionario.getNomeFuncionario());
-            _pst.setString(3, novo_funcionario.getEmailFuncionario());
-            _pst.setString(4, novo_funcionario.getTelefoneFuncionario());
-            _pst.setString(5, novo_funcionario.getEnderecoFuncionario());
-            _pst.setString(6, novo_funcionario.getNascimentoFuncionario());
-            _pst.setInt(7, novo_funcionario.getCpfFuncionario());
+            _pst.setInt(1, 0);
+            _pst.setString(2, novo_funcionario.getCpfFuncionario());
+            _pst.setString(3, novo_funcionario.getNomeFuncionario());
+            _pst.setString(4, novo_funcionario.getEmailFuncionario());
+            _pst.setString(5, novo_funcionario.getTelefoneFuncionario());
+            _pst.setString(6, novo_funcionario.getEnderecoFuncionario());
+            _pst.setString(7, novo_funcionario.getNascimentoFuncionario());
+            _pst.setString(8, novo_funcionario.getUsuarioFuncionario());
+            _pst.setString(9, novo_funcionario.getSenhaFuncionario());
+            _pst.setInt(10, id);
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
         } catch (SQLException ex) {
-            System.out.println("Erro: Conexão Banco! :(");
+            System.out.println("Erro: Conexão Banco! :( //" + ex.getMessage());
             _sucesso = false;
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
@@ -233,5 +243,54 @@ public class FuncionarioBancoDAO {
             }
         }
         return _sucesso;
+    }
+    
+    public Funcionario busca(int id) {
+        // Conecto com o Banco
+        conectaBanco();
+        System.out.println("ID: "+Integer.toString(id));
+        // Faz a consulta
+        String sql = "SELECT * FROM funcionario WHERE idFuncionario = ?";
+        Funcionario f = new Funcionario();
+        try {
+            // Preparo
+            _pst = _con.prepareStatement(sql);
+            // Indico que o primeiro ? significa o ID
+            _pst.setInt(1, id);
+            // Executo a pesquisa
+            _rs = _pst.executeQuery();
+            _sucesso = true;
+            
+            while(_rs.next()){
+                f.setCpfFuncionario(_rs.getString("cpfFuncionario"));
+                f.setEmailFuncionario(_rs.getString("emailFuncionario"));
+                f.setEnderecoFuncionario(_rs.getString("enderecoFuncionario"));
+                f.setNascimentoFuncionario(_rs.getString("nascimentoFuncionario"));
+                f.setNomeFuncionario(_rs.getString("nomeFuncionario"));
+                f.setSenhaFuncionario(_rs.getString("senhaFuncionario"));
+                f.setTelefoneFuncionario(_rs.getString("telefoneFuncionario"));
+                f.setUsuarioFuncionario(_rs.getString("usuarioFuncionario"));
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :( // "+ex.getMessage());
+            _sucesso = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_pst != null) {
+                    _pst.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro: Conexão não pode ser fechada! :(");
+            }
+        }
+        return f;
     }
 }
