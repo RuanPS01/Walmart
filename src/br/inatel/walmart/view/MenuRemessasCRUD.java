@@ -164,7 +164,9 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       new addRemessa(RemessaBancoDAO.getInstance().busca(tableRem.getSelectedRow()+1), tableRem.getSelectedRow()+1).setVisible(true);
+       if(tableRem.getSelectedRow() != -1){
+            new addRemessa(RemessaBancoDAO.getInstance().busca(tableRem.getSelectedRow()+1), tableRem.getSelectedRow()+1).setVisible(true);
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -179,9 +181,11 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(tableRem.getSelectedColumn() != -1){
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
         if(op == 0){
             RemessaBancoDAO.getInstance().deleta(tableRem.getSelectedRow()+1);
+        }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

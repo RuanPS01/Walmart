@@ -167,7 +167,9 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new addFuncionario(FuncionarioBancoDAO.getInstance().busca(jTable.getSelectedRow()+1), jTable.getSelectedRow()+1).setVisible(true);
+        if(jTable.getSelectedRow() != -1){
+            new addFuncionario(FuncionarioBancoDAO.getInstance().busca(jTable.getSelectedRow()+1), jTable.getSelectedRow()+1).setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -182,9 +184,11 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(jTable.getSelectedColumn() != -1){
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
         if(op == 0){
             FuncionarioBancoDAO.getInstance().deleta(jTable.getSelectedRow()+1);
+        }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
