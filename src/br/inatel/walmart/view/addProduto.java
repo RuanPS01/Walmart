@@ -265,6 +265,7 @@ public class addProduto extends javax.swing.JFrame {
         MES_V_textBoxProduto.setText("");
         ANO_V_textBoxProduto.setText("");
         OBS_textBoxProduto.setText("");
+        this.dispose();
     }//GEN-LAST:event_CANCEL_ProdutoActionPerformed
 
     private void OBS_textBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OBS_textBoxProdutoActionPerformed

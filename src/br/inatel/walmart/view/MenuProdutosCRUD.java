@@ -8,9 +8,6 @@ package br.inatel.walmart.view;
 import br.inatel.walmart.control.ControleProdutos;
 import br.inatel.walmart.model.Produto;
 import br.inatel.walmart.control.AtualizaTabelaProdutos;
-import java.awt.Component;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -60,7 +57,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        tableProd = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -98,7 +95,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, produtoList, jTable);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, produtoList, tableProd);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeProduto}"));
         columnBinding.setColumnName("Nome Produto");
         columnBinding.setColumnClass(String.class);
@@ -113,7 +110,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
         columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jScrollPane1.setViewportView(jTable);
+        jScrollPane1.setViewportView(tableProd);
 
         jButton4.setText("Atualizar Tabela");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -168,20 +165,22 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaProdutos.size() != 0) {
+        //if (listaProdutos.size() != 0) {
             Produto produto = new Produto();
-            produto = listaProdutos.getProduto(jTable.getSelectedRow());
-            editProduto edit = new editProduto(produto, listaProdutos, jTable.getSelectedRow());
-            edit.setVisible(true);
-        }
+            produto = tableProd.getSelectedRow();
+            System.out.println("Nome: "+produto.getNomeProduto());
+            System.out.println("Barcode: "+produto.getBarcodeProduto());
+            //editProduto edit = new editProduto(produto, listaProdutos, tableProd.getSelectedRow());
+            //edit.setVisible(true);
+        //}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (listaProdutos.size() != 0) {
             for (int i = 0; i < listaProdutos.size(); i++) {
-                jTable.setValueAt(listaProdutos.getNomeProduto(i), i, 0);
-                jTable.setValueAt(listaProdutos.getDataVencimento(i), i, 1);
-                jTable.setValueAt(listaProdutos.getQuantidadeDisponivel(i), i, 2);
+                tableProd.setValueAt(listaProdutos.getNomeProduto(i), i, 0);
+                tableProd.setValueAt(listaProdutos.getDataVencimento(i), i, 1);
+                tableProd.setValueAt(listaProdutos.getQuantidadeDisponivel(i), i, 2);
             }
         }
         
@@ -190,10 +189,10 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
         if (listaProdutos.size() != 0 && op==0) {
-            int index = jTable.getSelectedRow();
+            int index = tableProd.getSelectedRow();
             listaProdutos.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
-            ((DefaultTableModel)jTable.getModel()).removeRow(index);
+            ((DefaultTableModel)tableProd.getModel()).removeRow(index);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -253,9 +252,9 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable;
     private java.util.List<br.inatel.walmart.view.Produto> produtoList;
     private javax.persistence.Query produtoQuery;
+    public javax.swing.JTable tableProd;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

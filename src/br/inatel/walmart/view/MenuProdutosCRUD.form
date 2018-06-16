@@ -162,10 +162,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable">
+        <Component class="javax.swing.JTable" name="tableProd">
           <Properties>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -188,17 +193,21 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="produtoList" target="jTable" targetPath="elements" updateStrategy="0" immediately="true">
+            <BindingProperty name="elements" source="produtoList" target="tableProd" targetPath="elements" updateStrategy="0" immediately="true">
               <Subbinding sourcePath="${nomeProduto}">
+                <BindingParameter name="NAME" value="Nome Produto"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${empresaProduto}">
+                <BindingParameter name="NAME" value="Empresa Produto"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${precoProduto}">
+                <BindingParameter name="NAME" value="Preco Produto"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${quantidadeDisponivelProduto}">
+                <BindingParameter name="NAME" value="Quantidade Disponivel Produto"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
               </Subbinding>
             </BindingProperty>
