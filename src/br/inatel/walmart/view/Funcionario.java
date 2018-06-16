@@ -66,11 +66,15 @@ public class Funcionario implements Serializable {
     }
 
     public void setUsuarioFuncionario(String u){
+        String oldU = this.usuarioFuncionario;
         this.usuarioFuncionario = u;
+        changeSupport.firePropertyChange("usuarioFuncionario", oldU, u);
     }
     
     public void setSenhaFuncionario(String s){
+        String oldS = this.senhaFuncionario;
         this.senhaFuncionario = s;
+        changeSupport.firePropertyChange("senhaFuncionario", oldS, s);
     }
     
     public String getSenhaFuncionario(){

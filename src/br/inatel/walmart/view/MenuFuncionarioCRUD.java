@@ -49,6 +49,10 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("walmart?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         funcionarioQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Funcionario f");
         funcionarioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : funcionarioQuery.getResultList();
+        funcionarioQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Funcionario f");
+        funcionarioList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : funcionarioQuery1.getResultList();
+        funcionarioQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Funcionario f");
+        funcionarioList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : funcionarioQuery2.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -95,7 +99,7 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, funcionarioList, jTable);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, funcionarioList2, jTable);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeFuncionario}"));
         columnBinding.setColumnName("Nome Funcionario");
         columnBinding.setColumnClass(String.class);
@@ -248,7 +252,11 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     private javax.swing.ButtonGroup MostrarPor;
     private javax.persistence.EntityManager entityManager;
     private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList;
+    private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList1;
+    private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList2;
     private javax.persistence.Query funcionarioQuery;
+    private javax.persistence.Query funcionarioQuery1;
+    private javax.persistence.Query funcionarioQuery2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

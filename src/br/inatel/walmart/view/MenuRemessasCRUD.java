@@ -48,6 +48,8 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("walmart?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         remessaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
         remessaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery.getResultList();
+        remessaQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
+        remessaList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery1.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -91,7 +93,7 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, remessaList, jTable);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, remessaList1, jTable);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${empresaRemessa}"));
         columnBinding.setColumnName("Empresa Remessa");
         columnBinding.setColumnClass(String.class);
@@ -250,7 +252,9 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable;
     private java.util.List<br.inatel.walmart.view.Remessa> remessaList;
+    private java.util.List<br.inatel.walmart.view.Remessa> remessaList1;
     private javax.persistence.Query remessaQuery;
+    private javax.persistence.Query remessaQuery1;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

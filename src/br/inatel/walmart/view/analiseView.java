@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package br.inatel.walmart.view;
-
+import br.inatel.walmart.control.sendEmail;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.mail.EmailException;
 /**
  *
  * @author Polez
  */
 public class analiseView extends javax.swing.JFrame {
-
+    sendEmail Email = new sendEmail();
     /**
      * Creates new form analiseView
      */
@@ -35,12 +38,22 @@ public class analiseView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Resultados da análise");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Enviar por email...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -74,6 +87,22 @@ public class analiseView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Email.sendEmail("ruanpatrick.s@hotmail.com", "Ruan Patrick de Souza", "Menssagem de teste!");
+        } catch (EmailException ex) {
+            System.out.println("Erro: Email não enviado");
+            //Logger.getLogger(analiseView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        new menuGerente().setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

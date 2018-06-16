@@ -36,6 +36,24 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;br.inatel.walmart.view.Remessa&gt;"/>
       </AuxValues>
     </Component>
+    <Component class="javax.persistence.Query" name="remessaQuery1">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT r FROM Remessa r"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="remessaList1">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="remessaQuery1"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;br.inatel.walmart.view.Remessa&gt;"/>
+      </AuxValues>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -170,7 +188,7 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="remessaList" target="jTable" targetPath="elements" updateStrategy="0" immediately="true">
+            <BindingProperty name="elements" source="remessaList1" target="jTable" targetPath="elements" updateStrategy="0" immediately="true">
               <Subbinding sourcePath="${empresaRemessa}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
