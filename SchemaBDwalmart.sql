@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS Funcionario(
 flush privileges;
 
 insert into Produto values('0', '2.00', 'Macarrão', 'É perecível.', 'Maglioni', '0001010100', '12-12-12','15');
-insert into funcionario values('22552', 'Pedro Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
-insert into funcionario values('22552', 'Ruan Patrick', 'ruan@internet.feliz', '9998887', 'Rua Margaridas 12', '24/01/97', 'ruan', 'root');
+insert into funcionario values('null' ,'0', '134999746-30', 'Pedro Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
+insert into funcionario values('0', '10323', 'Ruan Patrick', 'ruan@internet.feliz', '9998887', 'Rua Margaridas 12', '24/01/97', 'ruan', 'root');
 select * from remessa;
 select * from cliente;
 
-SELECT * FROM funcionario WHERE usuarioFuncionario = 'polez' AND senhaFuncionario = 'root';
+SELECT * FROM funcionario;

@@ -224,7 +224,7 @@ public class addProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CONFIRM_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRM_ProdutoActionPerformed
-        produtoTemp.setIdProduto(Integer.parseInt(ID_textBoxProduto.getText()));
+        //produtoTemp.setIdProduto(Integer.parseInt(ID_textBoxProduto.getText()));
         produtoTemp.setNomeProduto(NOME_textBoxProduto.getText());
         produtoTemp.setEmpresaProduto(EMPRESA_textBoxProduto.getText());
         produtoTemp.setPrecoProduto(Double.parseDouble(PRECO_textBoxProduto.getText()));

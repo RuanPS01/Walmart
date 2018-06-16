@@ -5,6 +5,7 @@
  */
 package br.inatel.walmart.view;
 
+import br.inatel.walmart.control.ClienteBancoDAO;
 import br.inatel.walmart.model.Produto;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -41,7 +42,7 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        tableCli = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -78,7 +79,7 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, clienteList, jTable);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, clienteList, tableCli);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeCliente}"));
         columnBinding.setColumnName("Nome Cliente");
         columnBinding.setColumnClass(String.class);
@@ -90,12 +91,12 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableCli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableMouseClicked(evt);
+                tableCliMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable);
+        jScrollPane1.setViewportView(tableCli);
 
         jButton4.setText("Atualizar Tabela");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -151,12 +152,7 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*if (listaClientes.size() != 0) {
-            Produto remedio = new Produto();
-            remedio = listaClientes.getProduto(jTable.getSelectedRow());
-            editProduto edit = new editProduto(remedio, listaClientes, jTable.getSelectedRow());
-            edit.setVisible(true);
-        }*/    
+        new addCliente(ClienteBancoDAO.getInstance().busca(tableCli.getSelectedRow()+1), tableCli.getSelectedRow()+1).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -185,9 +181,9 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
         new menuFuncionário().setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+    private void tableCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCliMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTableMouseClicked
+    }//GEN-LAST:event_tableCliMouseClicked
 
     /**
      * @param args the command line arguments
@@ -242,7 +238,7 @@ public class MenuClientesCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable;
+    public javax.swing.JTable tableCli;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

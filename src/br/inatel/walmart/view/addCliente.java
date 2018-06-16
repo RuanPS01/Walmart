@@ -20,9 +20,27 @@ public class addCliente extends javax.swing.JFrame {
      * Creates new form addFuncionario
      */
     Cliente clienteTemp = new Cliente();
+    private boolean isEdit = false;
+    private int editId = 0;
     
     public addCliente(){
         initComponents();
+    }
+    
+    public addCliente(Cliente c, int id){
+        initComponents();
+        labelJanela.setText("Edição de cliente");
+        NOME_textBoxCliente.setText(c.getNomeCliente());
+        CPF_textBoxCliente.setText(c.getCpfCliente());
+        EMAIL_textBoxCliente.setText(c.getEmailCliente());
+        ENDERECO_textBoxCliente.setText(c.getEnderecoCliente());
+        String[] partes = c.getNascimentoCliente().split("/");
+        DIA_textBoxCliente.setText(partes[0]);
+        MES_textBoxCliente.setText(partes[1]);
+        ANO_textBoxCliente.setText(partes[2]);
+        TELEFONE_textBoxCliente.setText(c.getTelefoneCliente());
+        isEdit = true;
+        editId = id;
     }
 
     
@@ -53,10 +71,10 @@ public class addCliente extends javax.swing.JFrame {
         ANO_textBoxCliente = new javax.swing.JTextField();
         CANCEL_Produto = new javax.swing.JButton();
         CONFIRM_Produto = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        labelJanela = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Adicionar Funcionário");
+        setTitle("Cadastro Cliente");
         setResizable(false);
 
         jLabel1.setText("Nome:");
@@ -89,8 +107,8 @@ public class addCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jLabel9.setText("Regitro de novo cliente");
+        labelJanela.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        labelJanela.setText("Regitro de novo cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +117,7 @@ public class addCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
+                    .addComponent(labelJanela)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -146,7 +164,7 @@ public class addCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelJanela, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -202,13 +220,20 @@ public class addCliente extends javax.swing.JFrame {
     private void CONFIRM_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRM_ProdutoActionPerformed
         clienteTemp.setNomeCliente(NOME_textBoxCliente.getText());
         clienteTemp.setEnderecoCliente(ENDERECO_textBoxCliente.getText());
-        clienteTemp.setCpfCliente(Integer.parseInt(CPF_textBoxCliente.getText()));
+        clienteTemp.setCpfCliente(CPF_textBoxCliente.getText());
         clienteTemp.setNascimentoCliente(DIA_textBoxCliente.getText()+"/"+MES_textBoxCliente.getText()+"/"+ANO_textBoxCliente.getText());
-        clienteTemp.setEmailCiente(EMAIL_textBoxCliente.getText());
+        clienteTemp.setEmailCliente(EMAIL_textBoxCliente.getText());
         clienteTemp.setTelefoneCliente(TELEFONE_textBoxCliente.getText());
 
         //Adiciona o cliente no banco de dados
-        ClienteBancoDAO.getInstance().insere(clienteTemp);
+        if(isEdit){
+            System.out.println("Editing.");
+            ClienteBancoDAO.getInstance().edita(clienteTemp, editId);
+        }else{
+            System.out.println("Adding.");
+            ClienteBancoDAO.getInstance().insere(clienteTemp);
+        }
+        
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
 
@@ -269,6 +294,6 @@ public class addCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel labelJanela;
     // End of variables declaration//GEN-END:variables
 }
