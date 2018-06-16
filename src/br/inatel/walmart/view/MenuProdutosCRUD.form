@@ -193,24 +193,7 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="produtoList" target="tableProd" targetPath="elements" updateStrategy="0" immediately="true">
-              <Subbinding sourcePath="${nomeProduto}">
-                <BindingParameter name="NAME" value="Nome Produto"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${empresaProduto}">
-                <BindingParameter name="NAME" value="Empresa Produto"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${precoProduto}">
-                <BindingParameter name="NAME" value="Preco Produto"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${quantidadeDisponivelProduto}">
-                <BindingParameter name="NAME" value="Quantidade Disponivel Produto"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-              </Subbinding>
-            </BindingProperty>
+            <BindingProperty name="elements" source="produtoList" target="tableProd" targetPath="elements" updateStrategy="0" immediately="false"/>
           </BindingProperties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="MenuDeRemedios_jTable"/>
