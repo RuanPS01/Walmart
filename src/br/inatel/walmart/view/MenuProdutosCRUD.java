@@ -54,6 +54,10 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
         clienteList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : clienteQuery1.getResultList();
         produtoQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Produto p");
         produtoList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : produtoQuery1.getResultList();
+        produtoQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Produto p");
+        produtoList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : produtoQuery2.getResultList();
+        produtoQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Produto p");
+        produtoList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : produtoQuery3.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -97,16 +101,19 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, produtoList1, tableProd);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeProduto}"));
-        columnBinding.setColumnName("Nome Produto");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, produtoList3, tableProd);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataVencimentoProduto}"));
+        columnBinding.setColumnName("Data Vencimento Produto");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${precoProduto}"));
-        columnBinding.setColumnName("Preco Produto");
-        columnBinding.setColumnClass(Double.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${empresaProduto}"));
-        columnBinding.setColumnName("Empresa Produto");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${barcodeProduto}"));
+        columnBinding.setColumnName("Barcode Produto");
         columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${observacao}"));
+        columnBinding.setColumnName("Observacao");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idProduto}"));
+        columnBinding.setColumnName("Id Produto");
+        columnBinding.setColumnClass(Integer.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(tableProd);
@@ -249,8 +256,12 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private java.util.List<br.inatel.walmart.view.Produto> produtoList;
     private java.util.List<br.inatel.walmart.view.Produto> produtoList1;
+    private java.util.List<br.inatel.walmart.view.Produto> produtoList2;
+    private java.util.List<br.inatel.walmart.view.Produto> produtoList3;
     private javax.persistence.Query produtoQuery;
     private javax.persistence.Query produtoQuery1;
+    private javax.persistence.Query produtoQuery2;
+    private javax.persistence.Query produtoQuery3;
     public javax.swing.JTable tableProd;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
