@@ -137,7 +137,7 @@ public class Produto implements Serializable {
     }
 
     public Integer getQuantidadeDisponivelProduto() {
-        return quantidadeDisponivelProduto;
+        return this.quantidadeDisponivelProduto;
     }
 
     public void setQuantidadeDisponivelProduto(Integer quantidadeDisponivelProduto) {

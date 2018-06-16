@@ -5,6 +5,7 @@
  */
 package br.inatel.walmart.view;
 
+import br.inatel.walmart.control.ProdutoBancoDAO;
 import br.inatel.walmart.model.Produto;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -162,14 +163,7 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*if (listaProdutos.size() != 0) {
-            Produto produto = new Produto();
-            produto = tableProd.getSelectedRow();
-            System.out.println("Nome: "+produto.getNomeProduto());
-            System.out.println("Barcode: "+produto.getBarcodeProduto());
-            //editProduto edit = new editProduto(produto, listaProdutos, tableProd.getSelectedRow());
-            //edit.setVisible(true);
-        }*/
+        new addProduto(ProdutoBancoDAO.getInstance().busca(tableProd.getSelectedRow()+1),tableProd.getSelectedRow()+1).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -185,12 +179,9 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        /*if (listaProdutos.size() != 0 && op==0) {
-            int index = tableProd.getSelectedRow();
-            listaProdutos.excluir(index);
-            JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
-            ((DefaultTableModel)tableProd.getModel()).removeRow(index);
-        }*/
+        if(op == 0){
+            ProdutoBancoDAO.getInstance().deleta(tableProd.getSelectedRow()+1);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

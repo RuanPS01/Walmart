@@ -5,7 +5,6 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.model.Produto;
 import java.time.LocalDate;
 import br.inatel.walmart.control.ProdutoBancoDAO;
 import javax.swing.JOptionPane;
@@ -20,9 +19,29 @@ public class addProduto extends javax.swing.JFrame {
      * Creates new form RegistroRemedio
      */
     Produto produtoTemp = new Produto();
+    private boolean isEdit = false;
+    private int editId = 0;
 
     public addProduto() {
         initComponents();
+    }
+    
+    public addProduto(Produto p, int id){
+        initComponents();
+        System.out.println("Nome: "+p.getNomeProduto());
+        NOME_textBoxProduto.setText(p.getNomeProduto());
+        BARCODE_textBoxProduto.setText(p.getBarcodeProduto());
+        EMPRESA_textBoxProduto.setText(p.getEmpresaProduto());
+        PRECO_textBoxProduto.setText(Double.toString(p.getPrecoProduto()));
+        QUANT_textBoxProduto.setText(String.valueOf(p.getQuantidadeDisponivelProduto()));
+        String[] partes = p.getDataVencimentoProduto().split("/");
+        DIA_V_textBoxProduto.setText(partes[0]);
+        MES_V_textBoxProduto.setText(partes[1]);
+        ANO_V_textBoxProduto.setText(partes[2]);
+        OBS_textBoxProduto.setText(p.getObservacao());
+        editId = id;
+        isEdit = true;
+        Labelao.setText("Edição de produto");
     }
 
     /**
@@ -35,7 +54,7 @@ public class addProduto extends javax.swing.JFrame {
     private void initComponents() {
 
         Tipo = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        Labelao = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -63,8 +82,8 @@ public class addProduto extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jLabel1.setText("Regitro de novo produto");
+        Labelao.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        Labelao.setText("Regitro de novo produto");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("Nome do produto:");
@@ -121,7 +140,7 @@ public class addProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Labelao, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(OBS_textBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
@@ -170,7 +189,7 @@ public class addProduto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Labelao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -230,10 +249,16 @@ public class addProduto extends javax.swing.JFrame {
         produtoTemp.setPrecoProduto(Double.parseDouble(PRECO_textBoxProduto.getText()));
         produtoTemp.setQuantidadeDisponivelProduto(Integer.parseInt(QUANT_textBoxProduto.getText()));
         produtoTemp.setBarcodeProduto(BARCODE_textBoxProduto.getText());
-        produtoTemp.setLocalDateVencimentoProduto(LocalDate.of(Integer.parseInt(ANO_V_textBoxProduto.getText()), Integer.parseInt(MES_V_textBoxProduto.getText()), Integer.parseInt(DIA_V_textBoxProduto.getText())));
+        produtoTemp.setDataVencimentoProduto(DIA_V_textBoxProduto.getText()+"/"+MES_V_textBoxProduto.getText()+"/"+ANO_V_textBoxProduto.getText());
         produtoTemp.setObservacao(OBS_textBoxProduto.getText());
-
-        ProdutoBancoDAO.getInstance().insere(produtoTemp);
+        if(isEdit){
+            ProdutoBancoDAO.getInstance().edita(produtoTemp, editId);
+            System.out.println("Editando.");
+        }else{
+            ProdutoBancoDAO.getInstance().insere(produtoTemp);
+            System.out.println("Cadastrando.");
+        }
+        
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
 
@@ -307,13 +332,13 @@ public class addProduto extends javax.swing.JFrame {
     private javax.swing.JButton CONFIRM_Produto;
     private javax.swing.JTextField DIA_V_textBoxProduto;
     private javax.swing.JTextField EMPRESA_textBoxProduto;
+    private javax.swing.JLabel Labelao;
     private javax.swing.JTextField MES_V_textBoxProduto;
     private javax.swing.JTextField NOME_textBoxProduto;
     private javax.swing.JTextField OBS_textBoxProduto;
     private javax.swing.JTextField PRECO_textBoxProduto;
     private javax.swing.JTextField QUANT_textBoxProduto;
     private javax.swing.ButtonGroup Tipo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
