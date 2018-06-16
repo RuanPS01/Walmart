@@ -5,6 +5,7 @@
  */
 package br.inatel.walmart.view;
 
+import br.inatel.walmart.control.RemessaBancoDAO;
 import br.inatel.walmart.model.Produto;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -53,7 +54,7 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        tableRem = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -91,7 +92,7 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, remessaList, jTable);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, remessaList, tableRem);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${empresaRemessa}"));
         columnBinding.setColumnName("Empresa Remessa");
         columnBinding.setColumnClass(String.class);
@@ -106,7 +107,7 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jScrollPane1.setViewportView(jTable);
+        jScrollPane1.setViewportView(tableRem);
 
         jButton4.setText("Atualizar Tabela");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -159,16 +160,11 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //NO MOAR GAMBIARRAS, NO MOARR
         new addRemessa().setVisible(true);
-
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*if (listaRemessas.size() != 0) {
-            Produto remedio = new Produto();
-            remedio = listaRemessas.getProduto(jTable.getSelectedRow());
-            editProduto edit = new editProduto(remedio, listaRemessas, jTable.getSelectedRow());
-            edit.setVisible(true);
-        }*/
+       new addRemessa(RemessaBancoDAO.getInstance().busca(tableRem.getSelectedRow()+1), tableRem.getSelectedRow()+1).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -248,9 +244,9 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable;
     private java.util.List<br.inatel.walmart.view.Remessa> remessaList;
     private javax.persistence.Query remessaQuery;
+    public javax.swing.JTable tableRem;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

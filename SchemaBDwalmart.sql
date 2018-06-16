@@ -26,13 +26,14 @@ CREATE TABLE IF NOT EXISTS Cliente(
     nascimentoCliente VARCHAR(50)
 );
 
+drop table if exists remessa;
 CREATE TABLE IF NOT EXISTS Remessa(
 	idRemessa INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     dataRemessa VARCHAR(20),
     horaRemessa VARCHAR(20),
     empresaRemessa VARCHAR(50),
-    funcionarioRemessa INT, 	 
-    constraint fk_funcRemessa FOREIGN KEY (funcionarioRemessa) REFERENCES Funcionario(idFuncionario)
+    funcionarioRemessa varchar(30),
+    tipoRemessa varchar(40)
 );
 
 drop table if exists Funcionario;

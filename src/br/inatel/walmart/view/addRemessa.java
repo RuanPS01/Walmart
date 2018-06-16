@@ -21,11 +21,30 @@ public class addRemessa extends javax.swing.JFrame {
      * Creates new form addFuncionario
      */
     Remessa remessaTemp = new Remessa();
+    private boolean isEdit = false;
+    private int editId = 0;
     
     public addRemessa(){//ControleRemessas ListaDeRemessas) {
         initComponents();
         //ListaRemessas = ListaDeRemessas;
     }
+    
+    public addRemessa(Remessa r, int id){
+        initComponents();
+        TIPO_textBoxRemessa.setText(r.getTipo());
+        String[] partes = r.getData().split("/");
+        DIA_textBoxRemessa.setText(partes[0]);
+        MES_textBoxRemessa.setText(partes[1]);
+        ANO_textBoxRemessa.setText(partes[2]);
+        HORA_textBoxRemessa.setText(r.getHora());
+        EMPRESA_textBoxRemessa.setText(r.getEmpresa());
+        FUNCIONARIO_textBoxRemessa.setText(r.getFuncionario());
+        isEdit = true;
+        editId = id;
+        label.setText("Edição de remessa");
+    }
+    
+    
 
     //addRemessa() {
     //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -54,7 +73,7 @@ public class addRemessa extends javax.swing.JFrame {
         MES_textBoxRemessa = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ANO_textBoxRemessa = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
         CANCEL_Produto = new javax.swing.JButton();
         CONFIRM_Produto = new javax.swing.JButton();
 
@@ -76,8 +95,8 @@ public class addRemessa extends javax.swing.JFrame {
 
         jLabel8.setText("/");
 
-        jLabel9.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jLabel9.setText("Regitro de nova remessa");
+        label.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        label.setText("Regitro de nova remessa");
 
         CANCEL_Produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/walmart/view/CANCEL_70.png"))); // NOI18N
         CANCEL_Produto.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +119,7 @@ public class addRemessa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9)
+                    .addComponent(label)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(20, 20, 20)
@@ -145,7 +164,7 @@ public class addRemessa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CONFIRM_Produto))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -193,8 +212,13 @@ public class addRemessa extends javax.swing.JFrame {
         remessaTemp.setHora(HORA_textBoxRemessa.getText());
         remessaTemp.setEmpresa(EMPRESA_textBoxRemessa.getText());
         remessaTemp.setFuncionario(FUNCIONARIO_textBoxRemessa.getText());
-
-        RemessaBancoDAO.getInstance().insere(remessaTemp);
+        
+        if(isEdit){
+            RemessaBancoDAO.getInstance().edita(remessaTemp, editId);
+        }else{
+            RemessaBancoDAO.getInstance().insere(remessaTemp);
+        }
+        
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
     }//GEN-LAST:event_CONFIRM_ProdutoActionPerformed
@@ -258,6 +282,6 @@ public class addRemessa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }
