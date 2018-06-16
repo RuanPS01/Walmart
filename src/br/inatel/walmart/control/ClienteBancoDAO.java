@@ -111,21 +111,27 @@ public class ClienteBancoDAO {
     }
     
     // (1) DELETE: Deleta um Usuario
-    public boolean deleta(Cliente novo_cliente) {
+    public boolean deleta(int id) {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM cliente WHERE cpfCliente = ?";
+        String sql = "DELETE FROM cliente WHERE idCliente = ?";
+        String sql2 = "ALTER TABLE cliente DROP idCliente";
+        String sql3 = "ALTER TABLE cliente AUTO_INCREMENT = 1";
+        String sql4 = "ALTER TABLE cliente ADD idCliente int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setString(1, novo_cliente.getCpfCliente());
+            _pst.setInt(1, id);
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
+            _pst.executeUpdate(sql2);
+            _pst.executeUpdate(sql3);
+            _pst.executeUpdate(sql4);
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
             _sucesso = false;
