@@ -35,7 +35,7 @@ public class FuncionarioBancoDAO {
     // Usuario do Banco
     private String _user = "root";
     // Senha do Banco
-    private String _password = "";
+    private String _password = "root";
     // Variavel que indicara se uma operacao foi feita com sucesso ou nao
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
