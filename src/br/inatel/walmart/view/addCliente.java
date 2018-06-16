@@ -7,7 +7,7 @@ package br.inatel.walmart.view;
 
 
 import br.inatel.walmart.model.Cliente;
-import br.inatel.walmart.model.ClienteBancoDAO;
+import br.inatel.walmart.control.ClienteBancoDAO;
 import javax.swing.JOptionPane;
 
 /**

@@ -5,9 +5,7 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.control.ControleProdutos;
 import br.inatel.walmart.model.Produto;
-import br.inatel.walmart.control.AtualizaTabelaProdutos;
 import java.awt.Component;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -19,8 +17,6 @@ import javax.swing.table.DefaultTableModel;
  * @author ruanp
  */
 public class MenuFuncionarioCRUD extends javax.swing.JFrame {
-
-    ControleProdutos listaFuncionarios = new ControleProdutos();
     
     //AtualizaTabela updateTable;
     //Thread upTable;
@@ -171,33 +167,33 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaFuncionarios.size() != 0) {
+        /*if (listaFuncionarios.size() != 0) {
             Produto remedio = new Produto();
             remedio = listaFuncionarios.getProduto(jTable.getSelectedRow());
             editProduto edit = new editProduto(remedio, listaFuncionarios, jTable.getSelectedRow());
             edit.setVisible(true);
-        }
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (listaFuncionarios.size() != 0) {
+        /*if (listaFuncionarios.size() != 0) {
             for (int i = 0; i < listaFuncionarios.size(); i++) {
                 jTable.setValueAt(listaFuncionarios.getNomeProduto(i), i, 0);
                 jTable.setValueAt(listaFuncionarios.getDataVencimento(i), i, 1);
                 jTable.setValueAt(listaFuncionarios.getQuantidadeDisponivel(i), i, 2);
             }
-        }
+        }*/
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        if (listaFuncionarios.size() != 0 && op==0) {
+        /*if (listaFuncionarios.size() != 0 && op==0) {
             int index = jTable.getSelectedRow();
             listaFuncionarios.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
             ((DefaultTableModel)jTable.getModel()).removeRow(index);
-        }
+        }*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

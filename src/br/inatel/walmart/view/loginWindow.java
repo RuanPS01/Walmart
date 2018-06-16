@@ -5,7 +5,7 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.model.FuncionarioBancoDAO;
+import br.inatel.walmart.control.FuncionarioBancoDAO;
 import java.util.Objects;
 import javax.swing.JOptionPane;
 

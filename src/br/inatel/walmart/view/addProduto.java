@@ -7,8 +7,7 @@ package br.inatel.walmart.view;
 
 import br.inatel.walmart.model.Produto;
 import java.time.LocalDate;
-import br.inatel.walmart.control.ControleProdutos;
-import br.inatel.walmart.model.ProdutoBancoDAO;
+import br.inatel.walmart.control.ProdutoBancoDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +19,6 @@ public class addProduto extends javax.swing.JFrame {
     /**
      * Creates new form RegistroRemedio
      */
-    ControleProdutos ListaProdutos;
     Produto produtoTemp = new Produto();
 
     public addProduto() {
@@ -51,8 +49,6 @@ public class addProduto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        ID_textBoxProduto = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         EMPRESA_textBoxProduto = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -106,9 +102,6 @@ public class addProduto extends javax.swing.JFrame {
 
         jLabel6.setText("Ano");
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setText("ID:");
-
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Empresa:");
 
@@ -128,10 +121,6 @@ public class addProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ID_textBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(OBS_textBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,11 +171,7 @@ public class addProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(ID_textBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(NOME_textBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,7 +307,6 @@ public class addProduto extends javax.swing.JFrame {
     private javax.swing.JButton CONFIRM_Produto;
     private javax.swing.JTextField DIA_V_textBoxProduto;
     private javax.swing.JTextField EMPRESA_textBoxProduto;
-    private javax.swing.JTextField ID_textBoxProduto;
     private javax.swing.JTextField MES_V_textBoxProduto;
     private javax.swing.JTextField NOME_textBoxProduto;
     private javax.swing.JTextField OBS_textBoxProduto;
@@ -338,7 +322,6 @@ public class addProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables

@@ -5,9 +5,8 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.control.ControleFuncionarios;
 import br.inatel.walmart.model.Funcionario;
-import br.inatel.walmart.model.FuncionarioBancoDAO;
+import br.inatel.walmart.control.FuncionarioBancoDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,16 +18,10 @@ public class addFuncionario extends javax.swing.JFrame {
     /**
      * Creates new form addFuncionario
      */
-    ControleFuncionarios ListaFuncionarios;
     Funcionario funcionarioTemp = new Funcionario();
     
-    public addFuncionario(ControleFuncionarios ListaDeFuncionarios) {
+    public addFuncionario() {
         initComponents();
-        ListaFuncionarios = ListaDeFuncionarios;
-    }
-
-    private addFuncionario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

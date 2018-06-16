@@ -5,9 +5,7 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.control.ControleProdutos;
 import br.inatel.walmart.model.Produto;
-import br.inatel.walmart.control.AtualizaTabelaProdutos;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +16,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MenuProdutosCRUD extends javax.swing.JFrame {
 
-    ControleProdutos listaProdutos = new ControleProdutos();
     //AtualizaTabelaProdutos updateTable;
     //Thread upTable;
 
@@ -165,35 +162,35 @@ public class MenuProdutosCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //if (listaProdutos.size() != 0) {
+        /*if (listaProdutos.size() != 0) {
             Produto produto = new Produto();
             produto = tableProd.getSelectedRow();
             System.out.println("Nome: "+produto.getNomeProduto());
             System.out.println("Barcode: "+produto.getBarcodeProduto());
             //editProduto edit = new editProduto(produto, listaProdutos, tableProd.getSelectedRow());
             //edit.setVisible(true);
-        //}
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (listaProdutos.size() != 0) {
+        /*if (listaProdutos.size() != 0) {
             for (int i = 0; i < listaProdutos.size(); i++) {
                 tableProd.setValueAt(listaProdutos.getNomeProduto(i), i, 0);
                 tableProd.setValueAt(listaProdutos.getDataVencimento(i), i, 1);
                 tableProd.setValueAt(listaProdutos.getQuantidadeDisponivel(i), i, 2);
             }
-        }
+        }*/
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        if (listaProdutos.size() != 0 && op==0) {
+        /*if (listaProdutos.size() != 0 && op==0) {
             int index = tableProd.getSelectedRow();
             listaProdutos.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
             ((DefaultTableModel)tableProd.getModel()).removeRow(index);
-        }
+        }*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

@@ -5,9 +5,7 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.control.ControleProdutos;
 import br.inatel.walmart.model.Produto;
-import br.inatel.walmart.control.AtualizaTabelaProdutos;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -19,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MenuRemessasCRUD extends javax.swing.JFrame {
 
-    ControleProdutos listaRemessas = new ControleProdutos();
     //AtualizaTabela updateTable;
     //Thread upTable;
 
@@ -166,33 +163,33 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (listaRemessas.size() != 0) {
+        /*if (listaRemessas.size() != 0) {
             Produto remedio = new Produto();
             remedio = listaRemessas.getProduto(jTable.getSelectedRow());
             editProduto edit = new editProduto(remedio, listaRemessas, jTable.getSelectedRow());
             edit.setVisible(true);
-        }
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (listaRemessas.size() != 0) {
+        /*if (listaRemessas.size() != 0) {
             for (int i = 0; i < listaRemessas.size(); i++) {
                 jTable.setValueAt(listaRemessas.getNomeProduto(i), i, 0);
                 jTable.setValueAt(listaRemessas.getDataVencimento(i), i, 1);
                 jTable.setValueAt(listaRemessas.getQuantidadeDisponivel(i), i, 2);
             }
-        }
+        }*/
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
-        if (listaRemessas.size() != 0 && op==0) {
+        /*if (listaRemessas.size() != 0 && op==0) {
             int index = jTable.getSelectedRow();
             listaRemessas.excluir(index);
             JOptionPane.showMessageDialog(this, "Registro removido com sucesso! ");
             ((DefaultTableModel)jTable.getModel()).removeRow(index);
-        }
+        }*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

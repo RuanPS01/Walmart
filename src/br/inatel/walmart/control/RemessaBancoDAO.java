@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.inatel.walmart.model;
+package br.inatel.walmart.control;
 
+import br.inatel.walmart.model.Remessa;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

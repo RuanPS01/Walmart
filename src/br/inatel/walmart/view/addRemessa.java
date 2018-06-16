@@ -5,9 +5,8 @@
  */
 package br.inatel.walmart.view;
 
-import br.inatel.walmart.control.ControleRemessas;
 import br.inatel.walmart.model.Remessa;
-import br.inatel.walmart.model.RemessaBancoDAO;
+import br.inatel.walmart.control.RemessaBancoDAO;
 import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -21,7 +20,6 @@ public class addRemessa extends javax.swing.JFrame {
     /**
      * Creates new form addFuncionario
      */
-    ControleRemessas ListaRemessas;
     Remessa remessaTemp = new Remessa();
     
     public addRemessa(){//ControleRemessas ListaDeRemessas) {
