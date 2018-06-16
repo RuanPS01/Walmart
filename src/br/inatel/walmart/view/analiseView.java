@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package br.inatel.walmart.view;
+import br.inatel.walmart.control.ClienteBancoDAO;
 import br.inatel.walmart.control.sendEmail;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.commons.mail.EmailException;
 /**
  *
@@ -14,6 +16,7 @@ import org.apache.commons.mail.EmailException;
  */
 public class analiseView extends javax.swing.JFrame {
     sendEmail Email = new sendEmail();
+    ClienteBancoDAO clienteDAO = new ClienteBancoDAO();
     /**
      * Creates new form analiseView
      */
@@ -30,10 +33,14 @@ public class analiseView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        email_destinatarioTextBox = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        nome_destinatarioTextBox = new javax.swing.JTextField();
+        jLabelRelatorio = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Resultados da análise");
@@ -42,11 +49,10 @@ public class analiseView extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Enviar por email...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,27 +63,63 @@ public class analiseView extends javax.swing.JFrame {
 
         jButton2.setText("Cancelar");
 
+        jLabel1.setText("Email do Destinatário:");
+        jLabel1.setToolTipText("");
+
+        jLabel2.setText("Nome do Destinatário:");
+        jLabel2.setToolTipText("");
+
+        jLabelRelatorio.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        jLabelRelatorio.setText("Relatório");
+        jLabelRelatorio.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setText("Relatório Geral:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(89, 89, 89))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(email_destinatarioTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nome_destinatarioTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(5, 5, 5)
+                        .addComponent(email_destinatarioTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(nome_destinatarioTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -89,20 +131,26 @@ public class analiseView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            Email.sendEmail("ruanpatrick.s@hotmail.com", "Ruan Patrick de Souza", "Menssagem de teste!");
-        } catch (EmailException ex) {
-            System.out.println("Erro: Email não enviado");
-            //Logger.getLogger(analiseView.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if((email_destinatarioTextBox.getText() == "") || (nome_destinatarioTextBox.getText() == "")){
+            JOptionPane.showMessageDialog(this, "Preencha os campos vazios!");
+        }else{
+            try {
+                Email.sendEmail(email_destinatarioTextBox.getText(), nome_destinatarioTextBox.getText(), "Menssagem de teste!");
+            } catch (EmailException ex) {
+                System.out.println("Erro: Email não enviado");
+            }
         }
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         new menuGerente().setVisible(true);
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        String quantClientes = clienteDAO.selectQuantClientes();
+        jLabelRelatorio.setText("<html>Quantidade de clientes cadastrados no Banco de Dados: <br /> "+quantClientes+"<br /> Quantidade de produtos cadastrados no Banco de Dados: <br />"+"--Pera que vo fazer--<br />"+"</html>");
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -140,9 +188,13 @@ public class analiseView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField email_destinatarioTextBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelRelatorio;
+    private javax.swing.JTextField nome_destinatarioTextBox;
     // End of variables declaration//GEN-END:variables
 }
