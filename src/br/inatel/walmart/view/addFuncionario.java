@@ -228,12 +228,11 @@ public class addFuncionario extends javax.swing.JFrame {
     private void CONFIRM_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRM_ProdutoActionPerformed
         funcionarioTemp.setNomeFuncionario(NOME_textBoxFuncionario.getText());
         funcionarioTemp.setEnderecoFuncionario(ENDERECO_textBoxFuncionario.getText());
-        funcionarioTemp.setCpfFuncionario(Integer.parseInt(CPF_textBoxFuncionario.getText()));
+        funcionarioTemp.setCpfFuncionario(CPF_textBoxFuncionario.getText());
         funcionarioTemp.setNascimentoFuncionario(DIA_textBoxFuncionario.getText()+"/"+MES_textBoxFuncionario.getText()+"/"+ANO_textBoxFuncionario.getText());
         funcionarioTemp.setEmailFuncionario(EMAIL_textBoxFuncionario.getText());
         funcionarioTemp.setTelefoneFuncionario(TELEFONE_textBoxFuncionario.getText());
         
-        //ListaFuncionarios.addProduto(funcionarioTemp);
         FuncionarioBancoDAO.getInstance().insere(funcionarioTemp);
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();

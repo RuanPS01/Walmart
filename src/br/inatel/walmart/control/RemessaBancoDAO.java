@@ -74,14 +74,14 @@ public class RemessaBancoDAO {
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO remessa(idRemessa,dataRemessa,horaRemessa,empresaRemessa,funcionarioRemessa) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO Remessa (tipoRemessa, dataRemessa,horaRemessa,empresaRemessa,funcionarioRemessa) VALUES (?,?,?,?,?)";
 
         try {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, nova_remessa.getId());                    // ID
-            _pst.setString(2, nova_remessa.getData());              // DATA
+            _pst.setString(1, nova_remessa.getTipo());               // TIPO
+            _pst.setString(2, nova_remessa.getData());               // DATA
             _pst.setString(3, nova_remessa.getHora());               // HORA
             _pst.setString(4, nova_remessa.getEmpresa());            // EMPRESA
             _pst.setString(5, nova_remessa.getFuncionario());        // FUNCIONARIO
@@ -117,7 +117,7 @@ public class RemessaBancoDAO {
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM remessa WHERE idRemessa = ?";
+        String sql = "DELETE FROM Remessa WHERE idRemessa = ?";
 
         try {
             // Preparo
@@ -153,18 +153,17 @@ public class RemessaBancoDAO {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
-        String sql = "UPDATE remessa SET idRemessa = ?, dataRemessa = ?, horaRemessa = ?, empresaRemessa = ?, funcionarioRemessa = ? WHERE idRemessa = ?";
+        String sql = "UPDATE Remessa SET dataRemessa = ?, horaRemessa = ?, empresaRemessa = ?, funcionarioRemessa = ? WHERE idRemessa = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_remessa.getId());
-            _pst.setString(3, novo_remessa.getData());
-            _pst.setString(4, novo_remessa.getHora());
-            _pst.setString(5, novo_remessa.getEmpresa());
-            _pst.setString(6, novo_remessa.getFuncionario());
-            _pst.setInt(7, novo_remessa.getId());
+            _pst.setString(1, novo_remessa.getData());
+            _pst.setString(2, novo_remessa.getHora());
+            _pst.setString(3, novo_remessa.getEmpresa());
+            _pst.setString(4, novo_remessa.getFuncionario());
+            _pst.setInt(5, novo_remessa.getId());
 
             _pst.executeUpdate();
             _sucesso = true;

@@ -10,14 +10,23 @@ package br.inatel.walmart.model;
  * @author 1513 MXTI
  */
 public class Cliente {
-    private int cpfCliente;
-    private String nomeCliente, nascimentoCliente, emailCiente, enderecoCliente, telefoneCliente;
-
-    public int getCpfCliente() {
+    private int idCliente;
+    private String cpfCliente, nomeCliente, nascimentoCliente, emailCiente, enderecoCliente, telefoneCliente;
+    
+    
+    public String getCpfCliente() {
         return cpfCliente;
     }
 
-    public void setCpfCliente(int cpfCliente) {
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    public void setCpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
     }
 

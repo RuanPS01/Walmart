@@ -10,11 +10,20 @@ package br.inatel.walmart.model;
  * @author 1513 MXTI
  */
 public class Funcionario {
-    private int cpfFuncionario;
-    private String nomeFuncionario, telefoneFuncionario, nascimentoFuncionario, emailFuncionario, enderecoFuncionario;
+    private int idFuncionario;
+    private String cpfFuncionario, nomeFuncionario, telefoneFuncionario, nascimentoFuncionario, emailFuncionario, enderecoFuncionario;
     private String senhaFuncionario;
     private String usuarioFuncionario;
 
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+    
+    
     public void setSenhaFuncionario(String senhaFuncionario) {
         this.senhaFuncionario = senhaFuncionario;
     }
@@ -23,11 +32,11 @@ public class Funcionario {
         this.usuarioFuncionario = usuarioFuncionario;
     }
 
-    public int getCpfFuncionario() {
+    public String getCpfFuncionario() {
         return cpfFuncionario;
     }
 
-    public void setCpfFuncionario(int cpfFuncionario) {
+    public void setCpfFuncionario(String cpfFuncionario) {
         this.cpfFuncionario = cpfFuncionario;
     }
 

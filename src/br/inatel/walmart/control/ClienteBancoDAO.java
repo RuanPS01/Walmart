@@ -73,13 +73,13 @@ public class ClienteBancoDAO {
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO cliente(cpfCliente,nomeCliente,emailCiente,telefoneCliente,enderecoCliente,nascimentoCliente) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Cliente(cpfCliente,nomeCliente,emailCiente,telefoneCliente,enderecoCliente,nascimentoCliente) VALUES (?,?,?,?,?,?)";
 
         try {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, novo_cliente.getCpfCliente());           // CPF
+            _pst.setString(1, novo_cliente.getCpfCliente());        // CPF
             _pst.setString(2, novo_cliente.getNomeCliente());       // NOME
             _pst.setString(3, novo_cliente.getEmailCiente());       // EMAIL
             _pst.setString(4, novo_cliente.getTelefoneCliente());   // TELEFONE
@@ -116,13 +116,13 @@ public class ClienteBancoDAO {
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM cliente WHERE cpfCliente = ?";
+        String sql = "DELETE FROM Cliente WHERE cpfCliente = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_cliente.getCpfCliente());
+            _pst.setString(1, novo_cliente.getCpfCliente());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
@@ -153,19 +153,19 @@ public class ClienteBancoDAO {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
-        String sql = "UPDATE cliente SET cpfCliente = ?, nomeCliente = ?,emailCiente = ?,telefoneCliente = ?,enderecoCliente = ?,nascimentoCliente = ? WHERE cpfCliente = ?";
+        String sql = "UPDATE Cliente SET cpfCliente = ?, nomeCliente = ?,emailCiente = ?,telefoneCliente = ?,enderecoCliente = ?,nascimentoCliente = ? WHERE cpfCliente = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_cliente.getCpfCliente());
+            _pst.setString(1, novo_cliente.getCpfCliente());
             _pst.setString(2, novo_cliente.getNomeCliente());
             _pst.setString(3, novo_cliente.getEmailCiente());
             _pst.setString(4, novo_cliente.getTelefoneCliente());
             _pst.setString(5, novo_cliente.getEnderecoCliente());
             _pst.setString(6, novo_cliente.getNascimentoCliente());
-            _pst.setInt(7, novo_cliente.getCpfCliente());
+            _pst.setString(7, novo_cliente.getCpfCliente());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;

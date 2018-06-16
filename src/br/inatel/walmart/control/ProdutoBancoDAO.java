@@ -78,20 +78,19 @@ public class ProdutoBancoDAO {
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO produto(idProduto,precoProduto,nomeProduto,observacao,empresaProduto,barcodeProduto,dataVencimentoProduto,quantidadeDisponivelProduto) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Produto(precoProduto,nomeProduto,observacao,empresaProduto,barcodeProduto,dataVencimentoProduto,quantidadeDisponivelProduto) VALUES (?,?,?,?,?,?,?)";
 
         try {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, novo_produto.getIdProduto());                // ID
-            _pst.setDouble(2, novo_produto.getPrecoProduto());          // PRECO
-            _pst.setString(3, novo_produto.getNomeProduto());           // NOME
-            _pst.setString(4, novo_produto.getObservacao());            // OBSERVACAO
-            _pst.setString(5, novo_produto.getEmpresaProduto());        // EMPRESA
-            _pst.setString(6, novo_produto.getBarcodeProduto());        // CODIGO DE BARRAS
-            _pst.setString(7, novo_produto.getDataStringVencimento());  // DATA DE VENCIMENTO
-            _pst.setInt(8, novo_produto.getQuantidadeDisponivelProduto()); // QUANTIDADE DISPONIVEL
+            _pst.setDouble(1, novo_produto.getPrecoProduto());          // PRECO
+            _pst.setString(2, novo_produto.getNomeProduto());           // NOME
+            _pst.setString(3, novo_produto.getObservacao());            // OBSERVACAO
+            _pst.setString(4, novo_produto.getEmpresaProduto());        // EMPRESA
+            _pst.setString(5, novo_produto.getBarcodeProduto());        // CODIGO DE BARRAS
+            _pst.setString(6, novo_produto.getDataStringVencimento());  // DATA DE VENCIMENTO
+            _pst.setInt(7, novo_produto.getQuantidadeDisponivelProduto()); // QUANTIDADE DISPONIVEL
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
@@ -123,7 +122,7 @@ public class ProdutoBancoDAO {
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM produto WHERE idProduto = ?";
+        String sql = "DELETE FROM Produto WHERE idProduto = ?";
 
         try {
             // Preparo
@@ -160,21 +159,20 @@ public class ProdutoBancoDAO {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
-        String sql = "UPDATE produto SET idProduto = ?, precoProduto = ?, nomeProduto = ?,observacao = ?, empresaProduto = ?, barcodeProduto = ?,dataVencimentoProduto = ?, quantidadeDisponivelProduto = ? WHERE idProduto = ?";
+        String sql = "UPDATE Produto SET precoProduto = ?, nomeProduto = ?,observacao = ?, empresaProduto = ?, barcodeProduto = ?,dataVencimentoProduto = ?, quantidadeDisponivelProduto = ? WHERE idProduto = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_produto.getIdProduto());
-            _pst.setDouble(2, novo_produto.getPrecoProduto());
-            _pst.setString(3, novo_produto.getNomeProduto());
-            _pst.setString(4, novo_produto.getObservacao());
-            _pst.setString(5, novo_produto.getEmpresaProduto());
-            _pst.setString(6, novo_produto.getBarcodeProduto());
-            _pst.setString(7, novo_produto.getDataStringVencimento());
-            _pst.setInt(8, novo_produto.getQuantidadeDisponivelProduto());
-            _pst.setInt(9, novo_produto.getIdProduto());
+            _pst.setDouble(1, novo_produto.getPrecoProduto());
+            _pst.setString(2, novo_produto.getNomeProduto());
+            _pst.setString(3, novo_produto.getObservacao());
+            _pst.setString(4, novo_produto.getEmpresaProduto());
+            _pst.setString(5, novo_produto.getBarcodeProduto());
+            _pst.setString(6, novo_produto.getDataStringVencimento());
+            _pst.setInt(7, novo_produto.getQuantidadeDisponivelProduto());
+            _pst.setInt(8, novo_produto.getIdProduto());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;

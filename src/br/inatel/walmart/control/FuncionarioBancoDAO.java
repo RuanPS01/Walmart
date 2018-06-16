@@ -74,20 +74,20 @@ public class FuncionarioBancoDAO {
         conectaBanco();
         // Faz a consulta
 
-        String sql = "INSERT INTO funcionario(cpfFuncionario,nomeFuncionario,emailFuncionario,telefoneFuncionario,enderecoFuncionario,nascimentoFuncionario) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Funcionario(cpfFuncionario,nomeFuncionario,emailFuncionario,telefoneFuncionario,enderecoFuncionario,nascimentoFuncionario) VALUES (?,?,?,?,?,?,?,?)";
 
         try {
             // Preparo a insercao
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
-            _pst.setInt(1, novo_funcionario.getCpfFuncionario());           // CPF
+            _pst.setString(1, novo_funcionario.getCpfFuncionario());        // CPF
             _pst.setString(2, novo_funcionario.getNomeFuncionario());       // NOME
             _pst.setString(3, novo_funcionario.getEmailFuncionario());      // EMAIL
             _pst.setString(4, novo_funcionario.getTelefoneFuncionario());   // TELEFONE
             _pst.setString(5, novo_funcionario.getEnderecoFuncionario());   // ENDERECO
             _pst.setString(6, novo_funcionario.getNascimentoFuncionario()); // DATA DE NASCIMENTO
-            _pst.setString(7, novo_funcionario.getUsuarioFuncionario());
-            _pst.setString(8, novo_funcionario.getSenhaFuncionario());
+            _pst.setString(7, novo_funcionario.getUsuarioFuncionario());    // USUARIO
+            _pst.setString(8, novo_funcionario.getSenhaFuncionario());      // SENHA
             
             // Executo a pesquisa
             _pst.executeUpdate();
@@ -120,13 +120,13 @@ public class FuncionarioBancoDAO {
         conectaBanco();
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
-        String sql = "DELETE FROM funcionario WHERE cpfFuncionario = ?";
+        String sql = "DELETE FROM Funcionario WHERE cpfFuncionario = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_funcionario.getCpfFuncionario());
+            _pst.setString(1, novo_funcionario.getCpfFuncionario());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
@@ -154,7 +154,7 @@ public class FuncionarioBancoDAO {
     
     public String checaLogin(String usuario, String senha){
         Statement _stm = null;
-        String query = "SELECT * FROM funcionario WHERE usuarioFuncionario = ? AND senhaFuncionario = ?";
+        String query = "SELECT * FROM Funcionario WHERE usuarioFuncionario = ? AND senhaFuncionario = ?";
         try {
             conectaBanco();
             _pst = _con.prepareStatement(query);
@@ -197,19 +197,19 @@ public class FuncionarioBancoDAO {
         // Conecto com o Banco
         conectaBanco();
         // Faz a consulta
-        String sql = "UPDATE funcionario SET cpfFuncionario = ?,nomeFuncionario = ?,emailFuncionario = ?,telefoneFuncionario = ?,enderecoFuncionario = ?,nascimentoFuncionario = ? WHERE cpfFuncionario = ?";
+        String sql = "UPDATE Funcionario SET cpfFuncionario = ?,nomeFuncionario = ?,emailFuncionario = ?,telefoneFuncionario = ?,enderecoFuncionario = ?,nascimentoFuncionario = ? WHERE cpfFuncionario = ?";
 
         try {
             // Preparo
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o ID
-            _pst.setInt(1, novo_funcionario.getCpfFuncionario());
+            _pst.setString(1, novo_funcionario.getCpfFuncionario());
             _pst.setString(2, novo_funcionario.getNomeFuncionario());
             _pst.setString(3, novo_funcionario.getEmailFuncionario());
             _pst.setString(4, novo_funcionario.getTelefoneFuncionario());
             _pst.setString(5, novo_funcionario.getEnderecoFuncionario());
             _pst.setString(6, novo_funcionario.getNascimentoFuncionario());
-            _pst.setInt(7, novo_funcionario.getCpfFuncionario());
+            _pst.setString(7, novo_funcionario.getCpfFuncionario());
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
