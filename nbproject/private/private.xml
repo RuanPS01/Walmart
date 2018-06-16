@@ -5,16 +5,22 @@
         <group>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Produto.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Funcionario.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/ClienteBancoDAO.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addFuncionario.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addProduto.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/RemessaBancoDAO.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/MenuFuncionarioCRUD.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Remessa.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/MenuRemessasCRUD.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addCliente.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/MenuClientesCRUD.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/loginWindow.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Cliente.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/FuncionarioBancoDAO.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addProduto.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addCliente.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/ProdutoBancoDAO.java</file>
+            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/analiseView.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addRemessa.java</file>
             <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/MenuProdutosCRUD.java</file>
-            <file>file:/C:/Users/1513%20MXTI/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Cliente.java</file>
         </group>
     </open-files>
 </project-private>
