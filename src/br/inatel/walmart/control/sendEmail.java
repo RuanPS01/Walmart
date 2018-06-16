@@ -40,7 +40,7 @@ public class sendEmail {
         email.setTLS(true); 
         System.out.println("enviando...");
         email.send();
-        System.out.println("Email enviado!");        
+        System.out.println("Email enviado!");
     }
     
     

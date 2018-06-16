@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package br.inatel.walmart.view;
-import br.inatel.walmart.control.ClienteBancoDAO;
+import br.inatel.walmart.control.selectCountDAO;
 import br.inatel.walmart.control.sendEmail;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,7 +16,11 @@ import org.apache.commons.mail.EmailException;
  */
 public class analiseView extends javax.swing.JFrame {
     sendEmail Email = new sendEmail();
-    ClienteBancoDAO clienteDAO = new ClienteBancoDAO();
+    selectCountDAO countDAO = new selectCountDAO();
+    String quantClientes;
+    String quantProdutos;
+    String quantFuncionario;
+    String quantRemessas;
     /**
      * Creates new form analiseView
      */
@@ -136,7 +140,14 @@ public class analiseView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Preencha os campos vazios!");
         }else{
             try {
-                Email.sendEmail(email_destinatarioTextBox.getText(), nome_destinatarioTextBox.getText(), "Menssagem de teste!");
+                Email.sendEmail(email_destinatarioTextBox.getText(), nome_destinatarioTextBox.getText(), 
+                        "Quantidade de clientes: "+quantClientes+ " ||| "+
+                        "Quantidade de produtos: "+quantProdutos+ " ||| "+
+                        "Quantidade de funcionarios: "+quantFuncionario+ " ||| "+
+                        "Quantidade de remessas: "+quantRemessas);
+                System.out.println("Email destinatario: "+ email_destinatarioTextBox.getText());
+                System.out.println("Nome destinatario: "+ nome_destinatarioTextBox.getText());
+                JOptionPane.showMessageDialog(this, "Email enviado!");
             } catch (EmailException ex) {
                 System.out.println("Erro: Email não enviado");
             }
@@ -148,8 +159,14 @@ public class analiseView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        String quantClientes = clienteDAO.selectQuantClientes();
-        jLabelRelatorio.setText("<html>Quantidade de clientes cadastrados no Banco de Dados: <br /> "+quantClientes+"<br /> Quantidade de produtos cadastrados no Banco de Dados: <br />"+"--Pera que vo fazer--<br />"+"</html>");
+        quantClientes = countDAO.selectQuant("Cliente");
+        quantProdutos = countDAO.selectQuant("Produto");
+        quantFuncionario = countDAO.selectQuant("Funcionario");
+        quantRemessas = countDAO.selectQuant("Remessa");
+        jLabelRelatorio.setText("<html>Quantidade de clientes cadastrados no Banco de Dados: <br /> "+quantClientes+
+                            "<br /> Quantidade de produtos cadastrados no Banco de Dados: <br />"+quantProdutos+
+                            "<br /> Quantidade de funcionários cadastrados no Banco de Dados: <br />"+quantFuncionario+
+                            "<br /> Quantidade de remessas cadastradas no Banco de Dados: <br />"+quantRemessas+"</html>");
     }//GEN-LAST:event_formWindowOpened
 
     /**

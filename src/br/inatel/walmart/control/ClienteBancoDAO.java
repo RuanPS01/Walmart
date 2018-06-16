@@ -191,39 +191,4 @@ public class ClienteBancoDAO {
         }
         return _sucesso;
     }
-    public String selectQuantClientes() {
-        String quantClientes = "";
-        // Conecto com o Banco
-        conectaBanco();
-        // Faz a consulta
-        // SELECT a1, ... an FROM r1, ..., rm WHERE P
-        try {
-        rs = _st.executeQuery("SELECT count(*) FROM Clientes");
-            while ( rs.next() ) {
-                quantClientes = (String)rs.getString("count(*)");
-                System.out.println("Quantidade de clientes:" + quantClientes);
-            }
-            _con.close();
-        } catch (Exception e) {
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-        } finally {
-            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
-            try {
-                if (_rs != null) {
-                    _rs.close();
-                }
-                if (_pst != null) {
-                    _pst.close();
-                }
-                if (_con != null) {
-                    _con.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("Erro: Conexão não pode ser fechada! :(");
-            }
-        }
-        return quantClientes;
-    }
-    
 }
