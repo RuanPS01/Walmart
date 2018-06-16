@@ -66,6 +66,11 @@ public class analiseView extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Email do Destinatário:");
         jLabel1.setToolTipText("");
@@ -112,7 +117,6 @@ public class analiseView extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -150,6 +154,7 @@ public class analiseView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Email enviado!");
             } catch (EmailException ex) {
                 System.out.println("Erro: Email não enviado");
+                JOptionPane.showMessageDialog(this, "Erro ao enviar o email.");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -168,6 +173,10 @@ public class analiseView extends javax.swing.JFrame {
                             "<br /> Quantidade de funcionários cadastrados no Banco de Dados: <br />"+quantFuncionario+
                             "<br /> Quantidade de remessas cadastradas no Banco de Dados: <br />"+quantRemessas+"</html>");
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
