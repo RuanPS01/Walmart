@@ -40,7 +40,7 @@ public class Funcionario implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "cpfFuncionario")
-    private Integer cpfFuncionario;
+    private String cpfFuncionario;
     @Column(name = "nomeFuncionario")
     private String nomeFuncionario;
     @Column(name = "emailFuncionario")
@@ -57,11 +57,11 @@ public class Funcionario implements Serializable {
     public Funcionario() {
     }
 
-    public Funcionario(Integer cpfFuncionario) {
+    public Funcionario(String cpfFuncionario) {
         this.cpfFuncionario = cpfFuncionario;
     }
 
-    public Integer getCpfFuncionario() {
+    public String getCpfFuncionario() {
         return cpfFuncionario;
     }
 
@@ -85,8 +85,8 @@ public class Funcionario implements Serializable {
         return this.usuarioFuncionario;
     }
     
-    public void setCpfFuncionario(Integer cpfFuncionario) {
-        Integer oldCpfFuncionario = this.cpfFuncionario;
+    public void setCpfFuncionario(String cpfFuncionario) {
+        String oldCpfFuncionario = this.cpfFuncionario;
         this.cpfFuncionario = cpfFuncionario;
         changeSupport.firePropertyChange("cpfFuncionario", oldCpfFuncionario, cpfFuncionario);
     }
