@@ -5,12 +5,14 @@
  */
 package br.inatel.walmart.view;
 
+import br.inatel.walmart.control.alterTables;
+
 /**
  *
  * @author Polez
  */
 public class menuGerente extends javax.swing.JFrame {
-
+    alterTables alters = new alterTables();
     /**
      * Creates new form menuFuncionário
      */
@@ -37,6 +39,11 @@ public class menuGerente extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.darkGray);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/walmart/view/smal_Walmart_logo.svg.png"))); // NOI18N
 
@@ -111,6 +118,10 @@ public class menuGerente extends javax.swing.JFrame {
         new MenuFuncionarioCRUD().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        alters.alterTablesSQL();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
