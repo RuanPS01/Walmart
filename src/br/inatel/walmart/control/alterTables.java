@@ -85,6 +85,18 @@ public class alterTables {
 
         try {
             // Preparo
+            _pst = _con.prepareStatement(sql2);
+            _pst = _con.prepareStatement(sql3);
+            _pst = _con.prepareStatement(sql4);
+            _pst = _con.prepareStatement(sql5);
+            _pst = _con.prepareStatement(sql6);
+            _pst = _con.prepareStatement(sql7);
+            _pst = _con.prepareStatement(sql8);
+            _pst = _con.prepareStatement(sql9);
+            _pst = _con.prepareStatement(sq20);
+            _pst = _con.prepareStatement(sq21);
+            _pst = _con.prepareStatement(sq22);
+            _pst = _con.prepareStatement(sq23);
             // Indico que o primeiro ? significa o ID
             // Executo a pesquisa
             _pst.executeUpdate();

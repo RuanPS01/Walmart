@@ -142,7 +142,7 @@ public class menuFuncionário extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        alters.alterTablesSQL();
+        boolean v = alters.alterTablesSQL();
     }//GEN-LAST:event_formWindowOpened
 
     /**
