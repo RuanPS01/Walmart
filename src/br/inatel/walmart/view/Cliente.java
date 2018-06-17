@@ -40,7 +40,7 @@ public class Cliente implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "cpfCliente")
-    private Integer cpfCliente;
+    private String cpfCliente;
     @Column(name = "nomeCliente")
     private String nomeCliente;
     @Column(name = "emailCiente")
@@ -55,16 +55,16 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Integer cpfCliente) {
+    public Cliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
     }
 
-    public Integer getCpfCliente() {
+    public String getCpfCliente() {
         return cpfCliente;
     }
 
-    public void setCpfCliente(Integer cpfCliente) {
-        Integer oldCpfCliente = this.cpfCliente;
+    public void setCpfCliente(String cpfCliente) {
+        String oldCpfCliente = this.cpfCliente;
         this.cpfCliente = cpfCliente;
         changeSupport.firePropertyChange("cpfCliente", oldCpfCliente, cpfCliente);
     }

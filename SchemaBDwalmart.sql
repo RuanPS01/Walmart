@@ -59,5 +59,5 @@ insert into funcionario values('0', '10323', 'Ruan Patrick', 'ruan@internet.feli
 select * from remessa;
 select * from cliente;
 select * from produto;
-
+UPDATE cliente set cpfCliente = '00' where emailCiente = 'pedro_hpr@hotmail.com';
 SELECT * FROM funcionario;

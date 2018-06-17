@@ -220,7 +220,9 @@ public class addCliente extends javax.swing.JFrame {
     private void CONFIRM_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CONFIRM_ProdutoActionPerformed
         clienteTemp.setNomeCliente(NOME_textBoxCliente.getText());
         clienteTemp.setEnderecoCliente(ENDERECO_textBoxCliente.getText());
-        clienteTemp.setCpfCliente(CPF_textBoxCliente.getText());
+        String cleanup = CPF_textBoxCliente.getText();
+        cleanup = cleanup.replace("-", "");
+        clienteTemp.setCpfCliente(cleanup);
         clienteTemp.setNascimentoCliente(DIA_textBoxCliente.getText()+"/"+MES_textBoxCliente.getText()+"/"+ANO_textBoxCliente.getText());
         clienteTemp.setEmailCliente(EMAIL_textBoxCliente.getText());
         clienteTemp.setTelefoneCliente(TELEFONE_textBoxCliente.getText());
