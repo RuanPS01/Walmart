@@ -70,7 +70,6 @@ DELIMITER ;
 CALL alterTablesProcedure();
 
 
-#example FUNCTION
 DELIMITER $$
 CREATE FUNCTION insertDataExamples() returns VARCHAR(40)
 BEGIN
