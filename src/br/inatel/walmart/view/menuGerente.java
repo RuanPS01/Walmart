@@ -6,6 +6,7 @@
 package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.alterTables;
+import br.inatel.walmart.control.proceduresAndFunctions;
 
 /**
  *
@@ -13,6 +14,7 @@ import br.inatel.walmart.control.alterTables;
  */
 public class menuGerente extends javax.swing.JFrame {
     alterTables alters = new alterTables();
+    proceduresAndFunctions pAf = new proceduresAndFunctions();
     /**
      * Creates new form menuFuncionário
      */
@@ -120,7 +122,9 @@ public class menuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        boolean v = alters.alterTablesSQL();
+        //boolean v = alters.alterTablesSQL();
+        //boolean v1 = pAf.callAlterTablesSQL();
+        //boolean v2 = pAf.callInsertDataExamples();
     }//GEN-LAST:event_formWindowOpened
 
     /**

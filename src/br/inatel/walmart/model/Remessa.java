@@ -12,14 +12,14 @@ import java.util.Date;
  * @author 1513 MXTI
  */
 public class Remessa {
-    private int idRemessa;
-    private String tipoRemessa, empresaRemessa, funcionarioRemessa, horaRemessa, dataRemessa;
+    private int idRemessa,funcionarioRemessa;
+    private String tipoRemessa, empresaRemessa, horaRemessa, dataRemessa, nomeFuncionario;
 
-    public int getId() {
+    public int getIdRemessa() {
         return idRemessa;
     }
 
-    public void setId(int id) {
+    public void setIdRemessa(int id) {
         this.idRemessa = id;
     }
 
@@ -39,12 +39,20 @@ public class Remessa {
         this.empresaRemessa = empresa;
     }
 
-    public String getFuncionario() {
+    public int getFuncionarioRemessa() {
         return funcionarioRemessa;
     }
 
-    public void setFuncionario(String funcionario) {
-        this.funcionarioRemessa = funcionario;
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
+    public void setFuncionarioRemessa(int funcionarioRemessa) {
+        this.funcionarioRemessa = funcionarioRemessa;
     }
 
     public String getHora() {

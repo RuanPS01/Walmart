@@ -8,6 +8,7 @@ package br.inatel.walmart.view;
 import java.time.LocalDate;
 import br.inatel.walmart.control.ProdutoBancoDAO;
 import javax.swing.JOptionPane;
+import br.inatel.walmart.model.Produto;
 
 /**
  *

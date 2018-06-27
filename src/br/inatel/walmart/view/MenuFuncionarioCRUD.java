@@ -12,12 +12,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import br.inatel.walmart.control.selects;
+import java.util.ArrayList;
+import br.inatel.walmart.model.Funcionario;
 
 /**
  *
  * @author ruanp
  */
 public class MenuFuncionarioCRUD extends javax.swing.JFrame {
+    selects selectData = new selects();
     
     //AtualizaTabela updateTable;
     //Thread upTable;
@@ -43,7 +47,6 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jMenu1 = new javax.swing.JMenu();
         MostrarPor = new javax.swing.ButtonGroup();
@@ -58,6 +61,7 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        atualizarTabelaButton = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -69,6 +73,9 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
             }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -97,19 +104,136 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, funcionarioList1, jTable);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeFuncionario}"));
-        columnBinding.setColumnName("Nome Funcionario");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${telefoneFuncionario}"));
-        columnBinding.setColumnName("Telefone Funcionario");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${enderecoFuncionario}"));
-        columnBinding.setColumnName("Endereco Funcionario");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Email", "Usuario", "Senha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable);
+
+        atualizarTabelaButton.setText("Atualizar Tabela");
+        atualizarTabelaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarTabelaButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,27 +247,28 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(atualizarTabelaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(atualizarTabelaButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton3))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
 
         pack();
         setLocationRelativeTo(null);
@@ -156,16 +281,21 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int index =  (int)jTable.getValueAt(jTable.getSelectedRow(), 0);
+        System.out.println("INDEX: "+index);
         if(jTable.getSelectedRow() != -1){
-            new addFuncionario(FuncionarioBancoDAO.getInstance().busca(jTable.getSelectedRow()+1), jTable.getSelectedRow()+1).setVisible(true);
+            new addFuncionario(FuncionarioBancoDAO.getInstance().busca(index), index).setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int index =  (int)jTable.getValueAt(jTable.getSelectedRow(), 0);
+        System.out.println("INDEX: "+index);
         if(jTable.getSelectedColumn() != -1){
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
         if(op == 0){
-            FuncionarioBancoDAO.getInstance().deleta(jTable.getSelectedRow()+1);
+            FuncionarioBancoDAO.getInstance().deleta(index);//+1);
+            
         }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -178,6 +308,51 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         
     }//GEN-LAST:event_formWindowClosed
+
+    private void atualizarTabelaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarTabelaButtonActionPerformed
+        ArrayList<Funcionario> listFuncionarios = new ArrayList<Funcionario>();
+        listFuncionarios = selectData.selectFuncionarios();
+        for (int i = 0; i < 100; i++) {
+            jTable.setValueAt("", i, 0);
+            jTable.setValueAt("", i, 1);
+            jTable.setValueAt("", i, 2);
+            jTable.setValueAt("", i, 3);
+            jTable.setValueAt("", i, 4);
+            
+        } 
+        for (int i = 0; i < listFuncionarios.size(); i++) {
+            System.out.println("[[[ Posição "+i+" ]]]");
+            System.out.println("Nome: "+listFuncionarios.get(i).getNomeFuncionario());
+            System.out.println("Email: "+listFuncionarios.get(i).getEmailFuncionario());
+            System.out.println("Usuario: "+listFuncionarios.get(i).getUsuarioFuncionario());
+            System.out.println("Senha: "+listFuncionarios.get(i).getSenhaFuncionario());
+            System.out.println("----------------------------------------------------");
+            jTable.setValueAt(listFuncionarios.get(i).getIdFuncionario(), i, 0);
+            jTable.setValueAt(listFuncionarios.get(i).getNomeFuncionario(), i, 1);
+            jTable.setValueAt(listFuncionarios.get(i).getEmailFuncionario(), i, 2);
+            jTable.setValueAt(listFuncionarios.get(i).getUsuarioFuncionario(), i, 3);
+            jTable.setValueAt(listFuncionarios.get(i).getSenhaFuncionario(), i, 4);     
+        }        
+    }//GEN-LAST:event_atualizarTabelaButtonActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ArrayList<Funcionario> listFuncionarios = new ArrayList<Funcionario>();
+        listFuncionarios = selectData.selectFuncionarios();
+        
+        for (int i = 0; i < listFuncionarios.size(); i++) {
+            System.out.println("[[[ Posição "+i+" ]]]");
+            System.out.println("Nome: "+listFuncionarios.get(i).getNomeFuncionario());
+            System.out.println("Email: "+listFuncionarios.get(i).getEmailFuncionario());
+            System.out.println("Usuario: "+listFuncionarios.get(i).getUsuarioFuncionario());
+            System.out.println("Senha: "+listFuncionarios.get(i).getSenhaFuncionario());
+            System.out.println("----------------------------------------------------");
+            jTable.setValueAt(listFuncionarios.get(i).getIdFuncionario(), i, 0);
+            jTable.setValueAt(listFuncionarios.get(i).getNomeFuncionario(), i, 1);
+            jTable.setValueAt(listFuncionarios.get(i).getEmailFuncionario(), i, 2);
+            jTable.setValueAt(listFuncionarios.get(i).getUsuarioFuncionario(), i, 3);
+            jTable.setValueAt(listFuncionarios.get(i).getSenhaFuncionario(), i, 4);     
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -220,6 +395,7 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup MostrarPor;
+    private javax.swing.JButton atualizarTabelaButton;
     private javax.persistence.EntityManager entityManager;
     private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList;
     private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList1;
@@ -232,6 +408,5 @@ public class MenuFuncionarioCRUD extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,10 @@
 package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.alterTables;
+import br.inatel.walmart.control.proceduresAndFunctions;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,6 +17,7 @@ import br.inatel.walmart.control.alterTables;
  */
 public class menuFuncionário extends javax.swing.JFrame {
     alterTables alters = new alterTables();
+    proceduresAndFunctions pAf = new proceduresAndFunctions();
     public static String loggedUser;
     /**
      * Creates new form menuFuncionário
@@ -142,7 +147,9 @@ public class menuFuncionário extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        boolean v = alters.alterTablesSQL();
+        //boolean v = alters.alterTablesSQL();
+        //boolean v1 = pAf.callAlterTablesSQL();
+        //boolean v2 = pAf.callInsertDataExamples();
     }//GEN-LAST:event_formWindowOpened
 
     /**

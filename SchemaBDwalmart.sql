@@ -32,8 +32,11 @@ CREATE TABLE IF NOT EXISTS Remessa(
     dataRemessa VARCHAR(20),
     horaRemessa VARCHAR(20),
     empresaRemessa VARCHAR(50),
-    funcionarioRemessa varchar(30),
-    tipoRemessa varchar(40)
+    funcionarioRemessa INT,
+    nomefuncionarioRemessa VARCHAR(50),
+    tipoRemessa varchar(40),
+    constraint fk_funcRemessa foreign key (funcionarioRemessa) references Funcionario(idFuncionario) ON DELETE CASCADE
+    # [ ON UPDATE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
 );
 
 drop table if exists Funcionario;
@@ -67,50 +70,67 @@ BEGIN
     ALTER TABLE remessa ADD idRemessa int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
 END $$
 DELIMITER ;
-CALL alterTablesProcedure();
+-- #CALL alterTablesProcedure();
 
 
 DELIMITER $$
-CREATE FUNCTION insertDataExamples() returns VARCHAR(40)
+CREATE PROCEDURE insertDataExamples() # returns VARCHAR(40)
 BEGIN
-	insert into Produto values('0', '2.00', 'Macarrão', 'Alimento não perecível.', 'Maglioni', '0001010100', '12/12/12','15');
-    insert into Produto values('1', '3.00', 'Leite Integral', 'Alimento perecível.', 'ClasseA', '0001010100', '12/12/12','15');
-    insert into Produto values('2', '4.00', 'Margarina', 'Alimento perecível.', 'Qualy', '0001010100', '12/12/12','15');
-    insert into Produto values('3', '5.00', 'Manteiga', 'Alimento perecível.', 'Qualy', '0001010100', '12/12/12','15');
-    insert into Produto values('4', '6.00', 'Nescal', 'Alimento não perecível.', 'Nestle', '0001010100', '12/12/12','15');
-    insert into Produto values('5', '7.00', 'Papel higiênico', 'Limpeza.', 'Mili', '0001010100', '12/12/12','15');
-    insert into Produto values('6', '8.00', 'Sabonete', 'Limpeza.', 'Dove', '0001010100', '12/12/12','15');
-    insert into Produto values('7', '10.00', 'Detergente', 'Limpeza.', 'Ype', '0001010100', '12/12/12','15');
-    insert into Cliente values('8','11111111111','João Henrique','joao@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('1','22222222222','Pedro João','joao@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('2','33333333333','Luana Lourenço','luana@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('3','44444444444','Jack Jhonsom','jack@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('4','55555555555','Jonas Petra','jonas@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('5','66666666666','Cleiton Peregrino','cleiton@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('6','77777777777','Antonella Souza','antonella@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-	insert into Cliente values('7','88888888888','Bruno Eleno','bruno@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
-    insert into Remessa values('0','12/12/12','12:00','Bauducco','ruan','Alimento');
-	insert into Remessa values('1','13/12/12','13:00','Nestle','ruan','Alimento');
-	insert into Remessa values('2','14/12/12','14:00','Unileve','ruan','Limpeza');
-	insert into Remessa values('3','15/12/12','15:00','Panco','ruan','Alimento');
-    insert into funcionario values('0','1319', 'Pedrao Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
-	insert into funcionario values('1', '10323', 'Ruan Patrick', 'ruan@internet.feliz', '9998887', 'Rua Margaridas 12', '24/01/97', 'ruan', 'root');
-    insert into funcionario values('2', '10323', 'Ensley Ribeiro', 'ensley@internet.feliz', '9998887', 'Rua Margaridas 12', '00/00/00', 'ensley', 'root');
-    return 'Dados de exemplo inseridos com sucesso';
+	DELETE FROM Produto WHERE idProduto = '1';
+	insert into Produto values('1', '2.00', 'Macarrão', 'Alimento não perecível.', 'Maglioni', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '2';
+    insert into Produto values('2', '3.00', 'Leite Integral', 'Alimento perecível.', 'ClasseA', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '3';
+    insert into Produto values('3', '4.00', 'Margarina', 'Alimento perecível.', 'Qualy', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '4';
+    insert into Produto values('4', '5.00', 'Manteiga', 'Alimento perecível.', 'Qualy', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '5';
+    insert into Produto values('5', '6.00', 'Nescal', 'Alimento não perecível.', 'Nestle', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '6';
+    insert into Produto values('6', '7.00', 'Papel higiênico', 'Limpeza.', 'Mili', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '7';
+    insert into Produto values('7', '8.00', 'Sabonete', 'Limpeza.', 'Dove', '0001010100', '12/12/12','15');
+    DELETE FROM Produto WHERE idProduto = '8';
+    insert into Produto values('8', '10.00', 'Detergente', 'Limpeza.', 'Ype', '0001010100', '12/12/12','15');
+    DELETE FROM Cliente WHERE idCliente = '1';
+    insert into Cliente values('1','11111111111','João Henrique','joao@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '2';
+	insert into Cliente values('2','22222222222','Pedro João','joao@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '3';
+	insert into Cliente values('3','33333333333','Luana Lourenço','luana@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '4';
+	insert into Cliente values('4','44444444444','Jack Jhonsom','jack@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '5';
+	insert into Cliente values('5','55555555555','Jonas Petra','jonas@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '6';
+	insert into Cliente values('6','66666666666','Cleiton Peregrino','cleiton@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '7';
+	insert into Cliente values('7','77777777777','Antonella Souza','antonella@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Cliente WHERE idCliente = '8';
+	insert into Cliente values('8','88888888888','Bruno Eleno','bruno@internet.feliz','(35)988888888','Rua Logo ali','00/00/00');
+    DELETE FROM Remessa WHERE idRemessa = '1';
+    insert into Remessa values('1','12/12/12','12:00','Bauducco','1','Pedrao Polez','Alimento');
+    DELETE FROM Remessa WHERE idRemessa = '2';
+	insert into Remessa values('2','13/12/12','13:00','Nestle','2','Ruan Patrick','Alimento');
+    DELETE FROM Remessa WHERE idRemessa = '3';
+	insert into Remessa values('3','14/12/12','14:00','Unileve','1','Pedrao Polez','Limpeza');
+    DELETE FROM Remessa WHERE idRemessa = '4';
+	insert into Remessa values('4','15/12/12','15:00','Panco','2','Ruan Patrick','Alimento');
+    DELETE FROM Funcionario WHERE idFuncionario = '1';
+    insert into Funcionario values('1','1319', 'Pedrao Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
+    DELETE FROM Funcionario WHERE idFuncionario = '2';
+	insert into Funcionario values('2', '10323', 'Ruan Patrick', 'ruan@internet.feliz', '9998887', 'Rua Margaridas 12', '24/01/97', 'ruan', 'root');
+    DELETE FROM Funcionario WHERE idFuncionario = '3';
+	insert into Funcionario values('3', '10323', 'Ensley Ribeiro', 'ensley@internet.feliz', '9998887', 'Rua Margaridas 12', '00/00/00', 'ensley', 'root');
+    #return 'Dados de exemplo inseridos com sucesso!';
 END $$
 DELIMITER ;
-select insertDataExamples();
+CALL insertDataExamples();
 
 
-
-flush privileges;
-
-insert into Produto values('0', '2.00', 'Macarrão', 'É perecível.', 'Maglioni', '0001010100', '12/12/12','15');
-insert into funcionario values('1','1349', 'Pedro Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
-insert into funcionario values('1','1319', 'Pedrao Polez', 'pedro@internet.feliz', '9998887', 'Rua Margaridas 12', '20/12/95', 'polez', 'root');
-insert into funcionario values('0', '10323', 'Ruan Patrick', 'ruan@internet.feliz', '9998887', 'Rua Margaridas 12', '24/01/97', 'ruan', 'root');
-select * from remessa;
-select * from cliente;
-select * from produto;
-SELECT * FROM funcionario;
+#flush privileges;
+#SELECT * FROM remessa;
+#SELECT * FROM cliente;
+#SELECT * FROM produto;
+#SELECT * FROM funcionario;
 #UPDATE cliente set cpfCliente = '00' where emailCiente = 'pedro_hpr@hotmail.com';

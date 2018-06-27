@@ -39,8 +39,6 @@ public class ClienteBancoDAO {
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
     // CADA COLUNA DE UMA TABELA DEVE POSSUIR UMA VARIAVEL QUE A REPRESENTE NA SUA RESPECTIVA DAO
-    private int cpfFuncionario;
-    private String nomeFuncionario, telefoneFuncionario, nascimentoFuncionario, emailFuncionario, enderecoFuncionario;
     //---------------------------------------------------------------------
     
     private ClienteBancoDAO(){
@@ -117,9 +115,9 @@ public class ClienteBancoDAO {
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
         String sql = "DELETE FROM cliente WHERE idCliente = ?";
-        String sql2 = "ALTER TABLE cliente DROP idCliente";
-        String sql3 = "ALTER TABLE cliente AUTO_INCREMENT = 1";
-        String sql4 = "ALTER TABLE cliente ADD idCliente int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
+        //String sql2 = "ALTER TABLE cliente DROP idCliente";
+        //String sql3 = "ALTER TABLE cliente AUTO_INCREMENT = 1";
+        //String sql4 = "ALTER TABLE cliente ADD idCliente int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
 
         try {
             // Preparo
@@ -129,9 +127,9 @@ public class ClienteBancoDAO {
             // Executo a pesquisa
             _pst.executeUpdate();
             _sucesso = true;
-            _pst.executeUpdate(sql2);
-            _pst.executeUpdate(sql3);
-            _pst.executeUpdate(sql4);
+            //_pst.executeUpdate(sql2);
+            //_pst.executeUpdate(sql3);
+            //_pst.executeUpdate(sql4);
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
             _sucesso = false;

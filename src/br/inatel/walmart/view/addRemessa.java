@@ -7,7 +7,9 @@ package br.inatel.walmart.view;
 
 import br.inatel.walmart.model.Remessa;
 import br.inatel.walmart.control.RemessaBancoDAO;
+import br.inatel.walmart.control.selects;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -21,6 +23,7 @@ public class addRemessa extends javax.swing.JFrame {
      * Creates new form addFuncionario
      */
     Remessa remessaTemp = new Remessa();
+    selects sFk = new selects();
     private boolean isEdit = false;
     private int editId = 0;
     
@@ -38,17 +41,11 @@ public class addRemessa extends javax.swing.JFrame {
         ANO_textBoxRemessa.setText(partes[2]);
         HORA_textBoxRemessa.setText(r.getHora());
         EMPRESA_textBoxRemessa.setText(r.getEmpresa());
-        FUNCIONARIO_textBoxRemessa.setText(r.getFuncionario());
         isEdit = true;
         editId = id;
         label.setText("Edição de remessa");
     }
-    
-    
 
-    //addRemessa() {
-    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    //}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +56,9 @@ public class addRemessa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("walmart?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        funcionarioQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Funcionario f");
+        funcionarioList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : funcionarioQuery.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -68,7 +68,6 @@ public class addRemessa extends javax.swing.JFrame {
         HORA_textBoxRemessa = new javax.swing.JTextField();
         DIA_textBoxRemessa = new javax.swing.JTextField();
         EMPRESA_textBoxRemessa = new javax.swing.JTextField();
-        FUNCIONARIO_textBoxRemessa = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         MES_textBoxRemessa = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -76,10 +75,16 @@ public class addRemessa extends javax.swing.JFrame {
         label = new javax.swing.JLabel();
         CANCEL_Produto = new javax.swing.JButton();
         CONFIRM_Produto = new javax.swing.JButton();
+        FUNCIONARIO_comboBoxRemessa = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adicionar Remessa");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Tipo:");
 
@@ -112,18 +117,19 @@ public class addRemessa extends javax.swing.JFrame {
             }
         });
 
+        FUNCIONARIO_comboBoxRemessa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FUNCIONARIO_comboBoxRemessaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(20, 20, 20)
-                        .addComponent(FUNCIONARIO_textBoxRemessa))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,7 +137,8 @@ public class addRemessa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EMPRESA_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(EMPRESA_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -145,10 +152,18 @@ public class addRemessa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ANO_textBoxRemessa))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TIPO_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FUNCIONARIO_comboBoxRemessa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(label)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TIPO_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CANCEL_Produto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CONFIRM_Produto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -183,11 +198,11 @@ public class addRemessa extends javax.swing.JFrame {
                             .addComponent(HORA_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(EMPRESA_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(FUNCIONARIO_textBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                            .addComponent(FUNCIONARIO_comboBoxRemessa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,7 +216,6 @@ public class addRemessa extends javax.swing.JFrame {
         ANO_textBoxRemessa.setText("");
         HORA_textBoxRemessa.setText("");
         EMPRESA_textBoxRemessa.setText("");
-        FUNCIONARIO_textBoxRemessa.setText("");
     }//GEN-LAST:event_CANCEL_ProdutoActionPerformed
     public Date convertLocalDateToDate(LocalDate date) {
         return java.sql.Timestamp.valueOf(date.atStartOfDay());
@@ -210,8 +224,8 @@ public class addRemessa extends javax.swing.JFrame {
         remessaTemp.setTipo(TIPO_textBoxRemessa.getText());
         remessaTemp.setData(DIA_textBoxRemessa.getText()+"/"+MES_textBoxRemessa.getText()+"/"+ANO_textBoxRemessa.getText());
         remessaTemp.setHora(HORA_textBoxRemessa.getText());
-        remessaTemp.setEmpresa(EMPRESA_textBoxRemessa.getText());
-        remessaTemp.setFuncionario(FUNCIONARIO_textBoxRemessa.getText());
+        remessaTemp.setEmpresa(EMPRESA_textBoxRemessa.getText());        
+        remessaTemp.setNomeFuncionario(FUNCIONARIO_comboBoxRemessa.toString());
         
         if(isEdit){
             RemessaBancoDAO.getInstance().edita(remessaTemp, editId);
@@ -222,6 +236,20 @@ public class addRemessa extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Registro efetuado e salvo com sucesso! ");
         this.dispose();
     }//GEN-LAST:event_CONFIRM_ProdutoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ArrayList array = new ArrayList();
+        array = sFk.selectNomeFuncionarios();
+        String str = null;
+        for(int i = 0;i<array.size(); i++ ){
+            str = (String) array.get(i).toString();
+            FUNCIONARIO_comboBoxRemessa.addItem(str);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void FUNCIONARIO_comboBoxRemessaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FUNCIONARIO_comboBoxRemessaActionPerformed
+        remessaTemp.setNomeFuncionario(FUNCIONARIO_comboBoxRemessa.toString());
+    }//GEN-LAST:event_FUNCIONARIO_comboBoxRemessaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,6 +289,7 @@ public class addRemessa extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new addRemessa().setVisible(true);
+                
             }
         });
     }
@@ -271,10 +300,13 @@ public class addRemessa extends javax.swing.JFrame {
     private javax.swing.JButton CONFIRM_Produto;
     private javax.swing.JTextField DIA_textBoxRemessa;
     private javax.swing.JTextField EMPRESA_textBoxRemessa;
-    private javax.swing.JTextField FUNCIONARIO_textBoxRemessa;
+    private javax.swing.JComboBox<String> FUNCIONARIO_comboBoxRemessa;
     private javax.swing.JTextField HORA_textBoxRemessa;
     private javax.swing.JTextField MES_textBoxRemessa;
     private javax.swing.JTextField TIPO_textBoxRemessa;
+    private javax.persistence.EntityManager entityManager;
+    private java.util.List<br.inatel.walmart.view.Funcionario> funcionarioList;
+    private javax.persistence.Query funcionarioQuery;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

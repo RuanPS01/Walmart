@@ -40,8 +40,6 @@ public class FuncionarioBancoDAO {
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
     // CADA COLUNA DE UMA TABELA DEVE POSSUIR UMA VARIAVEL QUE A REPRESENTE NA SUA RESPECTIVA DAO
-    private int cpfFuncionario;
-    private String nomeFuncionario, telefoneFuncionario, nascimentoFuncionario, emailFuncionario, enderecoFuncionario;
     //---------------------------------------------------------------------
     
     private FuncionarioBancoDAO(){
@@ -122,9 +120,9 @@ public class FuncionarioBancoDAO {
         // Faz a consulta
         //DELETE FROM NomeTabela WHERE atributo1 = 'valor1‘;
         String sql = "DELETE FROM funcionario WHERE idFuncionario = ?";
-        String sql2 = "ALTER TABLE funcionario DROP idFuncionario";
-        String sql3 = "ALTER TABLE funcionario AUTO_INCREMENT = 1";
-        String sql4 = "ALTER TABLE funcionario ADD idFuncionario int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
+        //String sql2 = "ALTER TABLE funcionario DROP idFuncionario";
+        //String sql3 = "ALTER TABLE funcionario AUTO_INCREMENT = 1";
+        //String sql4 = "ALTER TABLE funcionario ADD idFuncionario int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST";
 
         try {
             // Preparo
@@ -133,9 +131,9 @@ public class FuncionarioBancoDAO {
             _pst.setInt(1, id);
             // Executo a pesquisa
             _pst.executeUpdate();
-            _pst.executeUpdate(sql2);
-            _pst.executeUpdate(sql3);
-            _pst.executeUpdate(sql4);
+            //_pst.executeUpdate(sql2);
+            //_pst.executeUpdate(sql3);
+            //_pst.executeUpdate(sql4);
             _sucesso = true;
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");

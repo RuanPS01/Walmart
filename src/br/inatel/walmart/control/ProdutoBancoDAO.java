@@ -5,7 +5,7 @@
  */
 package br.inatel.walmart.control;
 
-import br.inatel.walmart.view.Produto;
+import br.inatel.walmart.model.Produto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -41,11 +41,6 @@ public class ProdutoBancoDAO {
     private boolean _sucesso = false;
     //--------------------------------------------------------------------
     // CADA COLUNA DE UMA TABELA DEVE POSSUIR UMA VARIAVEL QUE A REPRESENTE NA SUA RESPECTIVA DAO
-    private int idProduto;
-    private String nomeProduto, observacao, empresaProduto, barcodeProduto, dataVencimentoProduto;
-    private LocalDate localDateVencimentoProduto;
-    private int quantidadeDisponivelProduto = 0; 
-    private double precoProduto;
     //---------------------------------------------------------------------
     
     private ProdutoBancoDAO(){

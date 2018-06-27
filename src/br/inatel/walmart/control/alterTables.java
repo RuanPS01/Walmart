@@ -5,6 +5,7 @@
  */
 package br.inatel.walmart.control;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,7 +27,8 @@ public class alterTables {
     // Permite o envio de comandos ESTATICOS SQL para o banco
     private Statement _st = null;
     // Permite o envio de comandos DINAMICOS SQL para o banco
-    private PreparedStatement _pst = null;
+    private PreparedStatement _pst = null;   
+    CallableStatement statement = null;
     // String indicando com qual schema havera conexao (livrariaacme)
     // Obs: Cada driver possui uma sintaxe diferente para a url
     private String _url = "jdbc:mysql://localhost:3306/" + "walmart";
@@ -60,6 +62,7 @@ public class alterTables {
             System.out.println("Conexão feita com sucesso!");
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
+            System.out.println("Erro Interno // "+ex.getMessage());
         }
     }
     
@@ -124,6 +127,7 @@ public class alterTables {
             
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
+            System.out.println("Erro Interno // "+ex.getMessage());
             _sucesso = false;
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes

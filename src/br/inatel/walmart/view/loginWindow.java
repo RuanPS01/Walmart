@@ -6,6 +6,7 @@
 package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.FuncionarioBancoDAO;
+import br.inatel.walmart.control.proceduresAndFunctions;
 import java.util.Objects;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class loginWindow extends javax.swing.JFrame {
     public static String loggedUser;
+    proceduresAndFunctions pAf = new proceduresAndFunctions();
     /**
      * Creates new form loginWindow
      */
@@ -42,6 +44,11 @@ public class loginWindow extends javax.swing.JFrame {
         setTitle("Login");
         setLocation(new java.awt.Point(360, 100));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         user_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +136,7 @@ public class loginWindow extends javax.swing.JFrame {
             if(Objects.equals(result, "")){
                 JOptionPane.showMessageDialog(null, "Nome de usuário ou senha incorretos.");
             }else{
-                loginWindow.loggedUser = result;
+               loginWindow.loggedUser = result;
                new menuFuncionário().setVisible(true);
                this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -138,6 +145,12 @@ public class loginWindow extends javax.swing.JFrame {
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        //boolean v = alters.alterTablesSQL();
+        //boolean v1 = pAf.callAlterTablesSQL();
+        boolean v2 = pAf.callInsertDataExamples();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -171,6 +184,7 @@ public class loginWindow extends javax.swing.JFrame {
             public void run() {
                 new loginWindow().setVisible(true);
                 System.out.println("COMEÇOU!!!");
+                
             }
         });
     }

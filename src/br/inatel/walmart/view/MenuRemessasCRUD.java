@@ -6,18 +6,21 @@
 package br.inatel.walmart.view;
 
 import br.inatel.walmart.control.RemessaBancoDAO;
+import br.inatel.walmart.control.selects;
 import br.inatel.walmart.view.Produto;
 import java.awt.Component;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import br.inatel.walmart.model.Remessa;
 
 /**
  *
  * @author ruanp
  */
 public class MenuRemessasCRUD extends javax.swing.JFrame {
-
+    selects selectData = new selects();
     //AtualizaTabela updateTable;
     //Thread upTable;
 
@@ -42,19 +45,27 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jMenu1 = new javax.swing.JMenu();
         MostrarPor = new javax.swing.ButtonGroup();
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("walmart?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         remessaQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
         remessaList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery.getResultList();
+        remessaQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
+        remessaList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery1.getResultList();
+        remessaQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
+        remessaList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery2.getResultList();
+        remessaQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
+        remessaList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery3.getResultList();
+        remessaQuery4 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT r FROM Remessa r");
+        remessaList4 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : remessaQuery4.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableRem = new javax.swing.JTable();
+        tableRemessas = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -63,6 +74,9 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -91,22 +105,129 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, remessaList, tableRem);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${empresaRemessa}"));
-        columnBinding.setColumnName("Empresa Remessa");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataRemessa}"));
-        columnBinding.setColumnName("Data Remessa");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${horaRemessa}"));
-        columnBinding.setColumnName("Hora Remessa");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${funcionarioRemessa}"));
-        columnBinding.setColumnName("Funcionario Remessa");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        jScrollPane1.setViewportView(tableRem);
+        tableRemessas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Empresa Distribuinte", "Data a Remessa", "Hora da Remessa", "Funcionario Responsável"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableRemessas);
+
+        jButton4.setText("Atualizar Tabela");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,27 +241,28 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
 
         pack();
         setLocationRelativeTo(null);
@@ -153,16 +275,20 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if(tableRem.getSelectedRow() != -1){
-            new addRemessa(RemessaBancoDAO.getInstance().busca(tableRem.getSelectedRow()+1), tableRem.getSelectedRow()+1).setVisible(true);
+        int index =  (int)tableRemessas.getValueAt(tableRemessas.getSelectedRow(), 0);
+        System.out.println("INDEX: "+index);
+        if(tableRemessas.getSelectedRow() != -1){
+            new addRemessa(RemessaBancoDAO.getInstance().busca(index), index).setVisible(true);
        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(tableRem.getSelectedColumn() != -1){
+        int index =  (int)tableRemessas.getValueAt(tableRemessas.getSelectedRow(), 0);
+        System.out.println("INDEX: "+index);
+        if(tableRemessas.getSelectedColumn() != -1){
         int op = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir o registro?");
         if(op == 0){
-            RemessaBancoDAO.getInstance().deleta(tableRem.getSelectedRow()+1);
+            RemessaBancoDAO.getInstance().deleta(index);//+1);
         }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -171,6 +297,38 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
         new menuFuncionário().setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ArrayList<Remessa> listRemessas = new ArrayList<Remessa>();
+        listRemessas = selectData.selectRemessas();
+        for (int i = 0; i < 100; i++) {
+            tableRemessas.setValueAt("", i, 0);
+            tableRemessas.setValueAt("", i, 1);
+            tableRemessas.setValueAt("", i, 2);
+            tableRemessas.setValueAt("", i, 3);
+            tableRemessas.setValueAt("", i, 4);
+        } 
+        for (int i = 0; i < listRemessas.size(); i++) {
+            tableRemessas.setValueAt(listRemessas.get(i).getIdRemessa(), i, 0);
+            tableRemessas.setValueAt(listRemessas.get(i).getEmpresa(), i, 1);
+            tableRemessas.setValueAt(listRemessas.get(i).getData(), i, 2);
+            tableRemessas.setValueAt(listRemessas.get(i).getHora(), i, 3);
+            tableRemessas.setValueAt(listRemessas.get(i).getNomeFuncionario(), i, 4);     
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ArrayList<Remessa> listRemessas = new ArrayList<Remessa>();
+        listRemessas = selectData.selectRemessas();
+        
+        for (int i = 0; i < listRemessas.size(); i++) {
+            tableRemessas.setValueAt(listRemessas.get(i).getIdRemessa(), i, 0);
+            tableRemessas.setValueAt(listRemessas.get(i).getEmpresa(), i, 1);
+            tableRemessas.setValueAt(listRemessas.get(i).getData(), i, 2);
+            tableRemessas.setValueAt(listRemessas.get(i).getHora(), i, 3);
+            tableRemessas.setValueAt(listRemessas.get(i).getNomeFuncionario(), i, 4);       
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -219,12 +377,20 @@ public class MenuRemessasCRUD extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.util.List<br.inatel.walmart.view.Remessa> remessaList;
+    private java.util.List<br.inatel.walmart.view.Remessa> remessaList1;
+    private java.util.List<br.inatel.walmart.view.Remessa> remessaList2;
+    private java.util.List<br.inatel.walmart.view.Remessa> remessaList3;
+    private java.util.List<br.inatel.walmart.view.Remessa> remessaList4;
     private javax.persistence.Query remessaQuery;
-    public javax.swing.JTable tableRem;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private javax.persistence.Query remessaQuery1;
+    private javax.persistence.Query remessaQuery2;
+    private javax.persistence.Query remessaQuery3;
+    private javax.persistence.Query remessaQuery4;
+    public javax.swing.JTable tableRemessas;
     // End of variables declaration//GEN-END:variables
 }
