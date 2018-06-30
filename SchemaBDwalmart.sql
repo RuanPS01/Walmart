@@ -129,8 +129,8 @@ CALL insertDataExamples();
 
 
 #flush privileges;
-#SELECT * FROM remessa;
-#SELECT * FROM cliente;
-#SELECT * FROM produto;
-#SELECT * FROM funcionario;
+SELECT * FROM remessa;
+SELECT * FROM cliente;
+SELECT * FROM produto;
+SELECT * FROM funcionario;
 #UPDATE cliente set cpfCliente = '00' where emailCiente = 'pedro_hpr@hotmail.com';

@@ -79,7 +79,7 @@ public class FuncionarioBancoDAO {
             _pst = _con.prepareStatement(sql);
             // Indico que o primeiro ? significa o nome digitado pelo usuario
             _pst.setInt(1, 0);
-            _pst.setString(2, novo_funcionario.getCpfFuncionario());           // CPF
+            _pst.setString(2, novo_funcionario.getCpfFuncionario());        // CPF
             _pst.setString(3, novo_funcionario.getNomeFuncionario());       // NOME
             _pst.setString(4, novo_funcionario.getEmailFuncionario());      // EMAIL
             _pst.setString(5, novo_funcionario.getTelefoneFuncionario());   // TELEFONE

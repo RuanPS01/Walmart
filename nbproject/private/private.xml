@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/MenuProdutosCRUD.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/ClienteBancoDAO.java</file>
+            <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Produto.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/sendEmail.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/addProduto.java</file>
+            <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/proceduresAndFunctions.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Funcionario.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/loginWindow.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/FuncionarioBancoDAO.java</file>
@@ -21,7 +23,9 @@
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/RemessaBancoDAO.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/menuGerente.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/ProdutoBancoDAO.java</file>
+            <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/view/menuFuncionário.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/model/Remessa.java</file>
+            <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/selects.java</file>
             <file>file:/C:/Users/RuanPatrickdeSouza/Documents/NetBeansProjects/Walmart/src/br/inatel/walmart/control/alterTables.java</file>
         </group>
     </open-files>
